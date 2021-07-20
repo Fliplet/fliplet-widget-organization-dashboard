@@ -1,7 +1,7 @@
 <template>
   <td :data-order="orderValue()">
     <span v-if="!cellValue && cellValue !== 0">—</span>
-    <span v-else-if="cellType === 'date'">{{ this.transformDate(cellValue) }}</span>
+    <span v-else-if="cellType === 'date' || cellType === 'sort-date'">{{ this.transformDate(cellValue) }}</span>
     <div v-else-if="cellType === 'dynamic'" class="multiline-cell">
       <p>
         {{ cellValue[0].toLocaleString('en') }}
