@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isDataTransformed">
-      <DataTable :sort-params="sortParams" :columns="cols" :rows="rows"></DataTable>
+      <DataTable :columns="cols" :rows="rows"></DataTable>
     </div>
   </div>
 </template>
@@ -47,10 +47,7 @@ export default {
         }
       ],
       rows: [],
-      isDataTransformed: false,
-      sortParams: [
-        { type: 'sort-date', targets: 1 }
-      ]
+      isDataTransformed: false
     };
   },
   components: {
@@ -70,7 +67,7 @@ export default {
         this.rows.push(
           [
             { value: { title: user.email, userId: user.id }, type: 'action' },
-            { value: user.lastSeenAt, type: 'sort-date'},
+            { value: user.lastSeenAt, type: 'date'},
             { value: user.createdAt, type: 'date'},
             { value: user.stats.studioSessions.count },
             { value: user.stats.viewerSessions.count },

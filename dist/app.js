@@ -14921,44 +14921,10 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
-    },
-    sortParams: {
-      type: Array,
-      "default": function _default() {
-        return [];
-      }
     }
   },
   methods: {
     initTable: function initTable() {
-      var _this = this;
-
-      $.fn.dataTableExt.type.order['sort-date-asc'] = function (a, b) {
-        var first = moment(a).format();
-        var second = moment(b).format();
-        if (first === 'Invalid date' && second !== 'Invalid date') return 1;
-        if (second === 'Invalid date' && first !== 'Invalid date') return -1;
-        if (second === 'Invalid date' && first === 'Invalid date') return 0;
-        var fDate = new Date(first).valueOf();
-        var sDate = new Date(second).valueOf();
-        if (fDate > sDate) return 1;
-        if (fDate < sDate) return -1;
-        return 0;
-      };
-
-      $.fn.dataTableExt.type.order['sort-date-desc'] = function (a, b) {
-        var first = moment(a).format();
-        var second = moment(b).format();
-        if (first === 'Invalid date' && second !== 'Invalid date') return 1;
-        if (second === 'Invalid date' && first !== 'Invalid date') return -1;
-        if (second === 'Invalid date' && first === 'Invalid date') return 0;
-        var fDate = new Date(first).valueOf();
-        var sDate = new Date(second).valueOf();
-        if (fDate > sDate) return -1;
-        if (fDate < sDate) return 1;
-        return 0;
-      };
-
       this.component = $(this.$refs.table).DataTable({
         scrollX: true,
         dom: 'Blfrtip',
@@ -14982,8 +14948,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         }],
         lengthMenu: [10, 25, 50, 100, 500],
-        pageLength: 10,
-        columnDefs: _this.sortParams
+        pageLength: 10
       });
       $(window).trigger('resize');
     },
@@ -15080,7 +15045,7 @@ var render = function() {
   return _c("td", { attrs: { "data-order": _vm.orderValue() } }, [
     !_vm.cellValue && _vm.cellValue !== 0
       ? _c("span", [_vm._v("—")])
-      : _vm.cellType === "date" || _vm.cellType === "sort-date"
+      : _vm.cellType === "date"
       ? _c("span", [_vm._v(_vm._s(this.transformDate(_vm.cellValue)))])
       : _vm.cellType === "dynamic"
       ? _c("div", { staticClass: "multiline-cell" }, [
@@ -16572,15 +16537,7 @@ var render = function() {
     _vm.isDataTransformed
       ? _c(
           "div",
-          [
-            _c("DataTable", {
-              attrs: {
-                "sort-params": _vm.sortParams,
-                columns: _vm.cols,
-                rows: _vm.rows
-              }
-            })
-          ],
+          [_c("DataTable", { attrs: { columns: _vm.cols, rows: _vm.rows } })],
           1
         )
       : _vm._e()
@@ -16645,11 +16602,7 @@ __webpack_require__.r(__webpack_exports__);
         help: 'The number of apps the user has created in Studio'
       }],
       rows: [],
-      isDataTransformed: false,
-      sortParams: [{
-        type: 'sort-date',
-        targets: 1
-      }]
+      isDataTransformed: false
     };
   },
   components: {
@@ -16676,7 +16629,7 @@ __webpack_require__.r(__webpack_exports__);
           type: 'action'
         }, {
           value: user.lastSeenAt,
-          type: 'sort-date'
+          type: 'date'
         }, {
           value: user.createdAt,
           type: 'date'
