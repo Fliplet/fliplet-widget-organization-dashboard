@@ -14662,11 +14662,7 @@ __webpack_require__.r(__webpack_exports__);
         help: 'The total times the an app updated was published in Studio'
       }],
       rows: [],
-      isDataTransformed: false,
-      sortParams: [{
-        type: 'data',
-        targets: []
-      }]
+      isDataTransformed: false
     };
   },
   components: {
@@ -14678,6 +14674,21 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+    }
+  },
+  computed: {
+    sortParams: function sortParams() {
+      var targets = [];
+      var l = this.rows[0].length;
+
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') targets.push(i);
+      }
+
+      return [{
+        type: 'data',
+        targets: targets
+      }];
     }
   },
   methods: {
@@ -14728,11 +14739,6 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.isDataTransformed = true;
       });
-      var l = this.rows[0].length;
-
-      for (var i = 0; i < l; i++) {
-        if (this.rows[0][i].type === 'date') this.sortParams[0].targets.push(i);
-      }
     }
   },
   mounted: function mounted() {
@@ -14948,8 +14954,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     initTable: function initTable() {
-      var _this = this;
-
       $.fn.dataTableExt.type.order['data-asc'] = function (a, b) {
         if (a === 'Infinity' && b !== 'Infinity') return 1;
         if (b === 'Infinity' && a !== 'Infinity') return -1;
@@ -14992,7 +14996,7 @@ __webpack_require__.r(__webpack_exports__);
         }],
         lengthMenu: [10, 25, 50, 100, 500],
         pageLength: 10,
-        columnDefs: _this.sortParams
+        columnDefs: this.sortParams
       });
       $(window).trigger('resize');
     },
@@ -16654,11 +16658,7 @@ __webpack_require__.r(__webpack_exports__);
         help: 'The number of apps the user has created in Studio'
       }],
       rows: [],
-      isDataTransformed: false,
-      sortParams: [{
-        type: 'data',
-        targets: []
-      }]
+      isDataTransformed: false
     };
   },
   components: {
@@ -16670,6 +16670,21 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+    }
+  },
+  computed: {
+    sortParams: function sortParams() {
+      var targets = [];
+      var l = this.rows[0].length;
+
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') targets.push(i);
+      }
+
+      return [{
+        type: 'data',
+        targets: targets
+      }];
     }
   },
   methods: {
@@ -16703,11 +16718,6 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.isDataTransformed = true;
       });
-      var l = this.rows[0].length;
-
-      for (var i = 0; i < l; i++) {
-        if (this.rows[0][i].type === 'date') this.sortParams[0].targets.push(i);
-      }
     }
   },
   mounted: function mounted() {

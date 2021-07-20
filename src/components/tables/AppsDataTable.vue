@@ -63,10 +63,7 @@ export default {
         }
       ],
       rows: [],
-      isDataTransformed: false,
-      sortParams: [
-        { type: 'data', targets: [] }
-      ]
+      isDataTransformed: false
     };
   },
   components: {
@@ -78,6 +75,16 @@ export default {
       default() {
         return [];
       }
+    }
+  },
+  computed: {
+    sortParams: function() {
+      var targets = [];
+      var l = this.rows[0].length;
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') targets.push(i);
+      }
+      return [{ type: 'data', targets: targets }];
     }
   },
   methods: {
@@ -102,10 +109,6 @@ export default {
 
         this.isDataTransformed = true;
       });
-      var l = this.rows[0].length;
-      for (var i = 0; i < l; i++) {
-        if (this.rows[0][i].type === 'date') this.sortParams[0].targets.push(i);
-      }
     }
   },
   mounted: function() {

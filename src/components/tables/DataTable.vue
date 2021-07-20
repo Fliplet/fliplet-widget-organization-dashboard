@@ -55,8 +55,6 @@ export default {
   },
   methods: {
     initTable: function() {
-      var _this = this;
-
       $.fn.dataTableExt.type.order['data-asc'] = function(a, b) {
         if (a === 'Infinity' &&  b !== 'Infinity') return 1;
         if (b === 'Infinity' && a !== 'Infinity') return -1;
@@ -106,7 +104,7 @@ export default {
         ],
         lengthMenu: [10, 25, 50, 100, 500],
         pageLength: 10,
-        columnDefs: _this.sortParams
+        columnDefs: this.sortParams
       });
       $(window).trigger('resize');
     },
