@@ -49,7 +49,7 @@ export default {
       rows: [],
       isDataTransformed: false,
       sortParams: [
-        { type: 'sort-date', targets: 1 }
+        { type: 'data', targets: [] }
       ]
     };
   },
@@ -70,7 +70,7 @@ export default {
         this.rows.push(
           [
             { value: { title: user.email, userId: user.id }, type: 'action' },
-            { value: user.lastSeenAt, type: 'sort-date'},
+            { value: user.lastSeenAt, type: 'date'},
             { value: user.createdAt, type: 'date'},
             { value: user.stats.studioSessions.count },
             { value: user.stats.viewerSessions.count },
@@ -82,6 +82,10 @@ export default {
 
         this.isDataTransformed = true;
       });
+      var l = this.rows[0].length;
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') this.sortParams[0].targets.push(i);
+      }
     }
   },
   mounted: function() {

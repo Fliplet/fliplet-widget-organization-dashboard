@@ -55,41 +55,26 @@ export default {
   },
   methods: {
     initTable: function() {
-      var first;
-      var second;
-      var fDate;
-      var sDate;
+      var _this = this;
 
-      $.fn.dataTableExt.type.order['sort-date-asc'] = function(a, b) {
-        first = moment(a).format();
-        second = moment(b).format();
+      $.fn.dataTableExt.type.order['data-asc'] = function(a, b) {
+        if (a === 'Infinity' &&  b !== 'Infinity') return 1;
+        if (b === 'Infinity' && a !== 'Infinity') return -1;
+        if (b === 'Infinity' && a === 'Infinity') return 0;
 
-        if (first === 'Invalid date' && second !== 'Invalid date') return 1;
-        if (second === 'Invalid date' && first !== 'Invalid date') return -1;
-        if (second === 'Invalid date' && first === 'Invalid date') return 0;
-
-        fDate = new Date(first).valueOf();
-        sDate = new Date(second).valueOf();
-
-        if (fDate > sDate) return 1;
-        if (fDate < sDate) return -1;
+        if (a > b) return 1;
+        if (a < b) return -1;
 
         return 0;
       };
 
-      $.fn.dataTableExt.type.order['sort-date-desc'] = function(a, b) {
-        first = moment(a).format();
-        second = moment(b).format();
+      $.fn.dataTableExt.type.order['data-desc'] = function(a, b) {
+        if (a === 'Infinity' &&  b !== 'Infinity') return 1;
+        if (b === 'Infinity' && a !== 'Infinity') return -1;
+        if (b === 'Infinity' && a === 'Infinity') return 0;
 
-        if (first === 'Invalid date' && second !== 'Invalid date') return 1;
-        if (second === 'Invalid date' && first !== 'Invalid date') return -1;
-        if (second === 'Invalid date' && first === 'Invalid date') return 0;
-
-        fDate = new Date(first).valueOf();
-        sDate = new Date(second).valueOf();
-
-        if (fDate > sDate) return -1;
-        if (fDate < sDate) return 1;
+        if (a > b) return -1;
+        if (a < b) return 1;
 
         return 0;
       };
@@ -121,7 +106,7 @@ export default {
         ],
         lengthMenu: [10, 25, 50, 100, 500],
         pageLength: 10,
-        columnDefs: this.sortParams
+        columnDefs: _this.sortParams
       });
       $(window).trigger('resize');
     },

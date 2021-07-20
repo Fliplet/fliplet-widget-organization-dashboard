@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isDataTransformed">
-      <DataTable :columns="cols" :rows="rows"></DataTable>
+      <DataTable :sort-params="sortParams" :columns="cols" :rows="rows"></DataTable>
     </div>
   </div>
 </template>
@@ -63,7 +63,10 @@ export default {
         }
       ],
       rows: [],
-      isDataTransformed: false
+      isDataTransformed: false,
+      sortParams: [
+        { type: 'data', targets: [] }
+      ]
     };
   },
   components: {
@@ -99,6 +102,10 @@ export default {
 
         this.isDataTransformed = true;
       });
+      var l = this.rows[0].length;
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') this.sortParams[0].targets.push(i);
+      }
     }
   },
   mounted: function() {

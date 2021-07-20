@@ -14577,7 +14577,15 @@ var render = function() {
     _vm.isDataTransformed
       ? _c(
           "div",
-          [_c("DataTable", { attrs: { columns: _vm.cols, rows: _vm.rows } })],
+          [
+            _c("DataTable", {
+              attrs: {
+                "sort-params": _vm.sortParams,
+                columns: _vm.cols,
+                rows: _vm.rows
+              }
+            })
+          ],
           1
         )
       : _vm._e()
@@ -14654,7 +14662,11 @@ __webpack_require__.r(__webpack_exports__);
         help: 'The total times the an app updated was published in Studio'
       }],
       rows: [],
-      isDataTransformed: false
+      isDataTransformed: false,
+      sortParams: [{
+        type: 'data',
+        targets: []
+      }]
     };
   },
   components: {
@@ -14716,6 +14728,11 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.isDataTransformed = true;
       });
+      var l = this.rows[0].length;
+
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') this.sortParams[0].targets.push(i);
+      }
     }
   },
   mounted: function mounted() {
@@ -14931,34 +14948,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     initTable: function initTable() {
-      var first;
-      var second;
-      var fDate;
-      var sDate;
+      var _this = this;
 
-      $.fn.dataTableExt.type.order['sort-date-asc'] = function (a, b) {
-        first = moment(a).format();
-        second = moment(b).format();
-        if (first === 'Invalid date' && second !== 'Invalid date') return 1;
-        if (second === 'Invalid date' && first !== 'Invalid date') return -1;
-        if (second === 'Invalid date' && first === 'Invalid date') return 0;
-        fDate = new Date(first).valueOf();
-        sDate = new Date(second).valueOf();
-        if (fDate > sDate) return 1;
-        if (fDate < sDate) return -1;
+      $.fn.dataTableExt.type.order['data-asc'] = function (a, b) {
+        if (a === 'Infinity' && b !== 'Infinity') return 1;
+        if (b === 'Infinity' && a !== 'Infinity') return -1;
+        if (b === 'Infinity' && a === 'Infinity') return 0;
+        if (a > b) return 1;
+        if (a < b) return -1;
         return 0;
       };
 
-      $.fn.dataTableExt.type.order['sort-date-desc'] = function (a, b) {
-        first = moment(a).format();
-        second = moment(b).format();
-        if (first === 'Invalid date' && second !== 'Invalid date') return 1;
-        if (second === 'Invalid date' && first !== 'Invalid date') return -1;
-        if (second === 'Invalid date' && first === 'Invalid date') return 0;
-        fDate = new Date(first).valueOf();
-        sDate = new Date(second).valueOf();
-        if (fDate > sDate) return -1;
-        if (fDate < sDate) return 1;
+      $.fn.dataTableExt.type.order['data-desc'] = function (a, b) {
+        if (a === 'Infinity' && b !== 'Infinity') return 1;
+        if (b === 'Infinity' && a !== 'Infinity') return -1;
+        if (b === 'Infinity' && a === 'Infinity') return 0;
+        if (a > b) return -1;
+        if (a < b) return 1;
         return 0;
       };
 
@@ -14986,7 +14992,7 @@ __webpack_require__.r(__webpack_exports__);
         }],
         lengthMenu: [10, 25, 50, 100, 500],
         pageLength: 10,
-        columnDefs: this.sortParams
+        columnDefs: _this.sortParams
       });
       $(window).trigger('resize');
     },
@@ -15083,7 +15089,7 @@ var render = function() {
   return _c("td", { attrs: { "data-order": _vm.orderValue() } }, [
     !_vm.cellValue && _vm.cellValue !== 0
       ? _c("span", [_vm._v("—")])
-      : _vm.cellType === "date" || _vm.cellType === "sort-date"
+      : _vm.cellType === "date"
       ? _c("span", [_vm._v(_vm._s(this.transformDate(_vm.cellValue)))])
       : _vm.cellType === "dynamic"
       ? _c("div", { staticClass: "multiline-cell" }, [
@@ -16650,8 +16656,8 @@ __webpack_require__.r(__webpack_exports__);
       rows: [],
       isDataTransformed: false,
       sortParams: [{
-        type: 'sort-date',
-        targets: 1
+        type: 'data',
+        targets: []
       }]
     };
   },
@@ -16679,7 +16685,7 @@ __webpack_require__.r(__webpack_exports__);
           type: 'action'
         }, {
           value: user.lastSeenAt,
-          type: 'sort-date'
+          type: 'date'
         }, {
           value: user.createdAt,
           type: 'date'
@@ -16697,6 +16703,11 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.isDataTransformed = true;
       });
+      var l = this.rows[0].length;
+
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') this.sortParams[0].targets.push(i);
+      }
     }
   },
   mounted: function mounted() {
