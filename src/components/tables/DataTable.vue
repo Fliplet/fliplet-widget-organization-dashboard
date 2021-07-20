@@ -55,31 +55,45 @@ export default {
   },
   methods: {
     initTable: function() {
-      var _this = this;
+      var first;
+      var second;
+      var fDate;
+      var sDate;
+
       $.fn.dataTableExt.type.order['sort-date-asc'] = function(a, b) {
-        var first = moment(a).format();
-        var second = moment(b).format();
+        first = moment(a).format();
+        second = moment(b).format();
+
         if (first === 'Invalid date' && second !== 'Invalid date') return 1;
         if (second === 'Invalid date' && first !== 'Invalid date') return -1;
         if (second === 'Invalid date' && first === 'Invalid date') return 0;
-        var fDate = new Date(first).valueOf();
-        var sDate = new Date(second).valueOf();
+
+        fDate = new Date(first).valueOf();
+        sDate = new Date(second).valueOf();
+
         if (fDate > sDate) return 1;
         if (fDate < sDate) return -1;
+
         return 0;
       };
+
       $.fn.dataTableExt.type.order['sort-date-desc'] = function(a, b) {
-        var first = moment(a).format();
-        var second = moment(b).format();
+        first = moment(a).format();
+        second = moment(b).format();
+
         if (first === 'Invalid date' && second !== 'Invalid date') return 1;
         if (second === 'Invalid date' && first !== 'Invalid date') return -1;
         if (second === 'Invalid date' && first === 'Invalid date') return 0;
-        var fDate = new Date(first).valueOf();
-        var sDate = new Date(second).valueOf();
+
+        fDate = new Date(first).valueOf();
+        sDate = new Date(second).valueOf();
+
         if (fDate > sDate) return -1;
         if (fDate < sDate) return 1;
+
         return 0;
       };
+
       this.component = $(this.$refs.table).DataTable({
         scrollX: true,
         dom: 'Blfrtip',
@@ -107,7 +121,7 @@ export default {
         ],
         lengthMenu: [10, 25, 50, 100, 500],
         pageLength: 10,
-        columnDefs: _this.sortParams
+        columnDefs: this.sortParams
       });
       $(window).trigger('resize');
     },
