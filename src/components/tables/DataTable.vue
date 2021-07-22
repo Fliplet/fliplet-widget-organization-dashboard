@@ -67,7 +67,7 @@ export default {
       };
 
       $.fn.dataTableExt.type.order['data-desc'] = function(a, b) {
-        if (a === 'Infinity' &&  b !== 'Infinity') return 1;
+        if (a === 'Infinity' && b !== 'Infinity') return 1;
         if (b === 'Infinity' && a !== 'Infinity') return -1;
         if (b === 'Infinity' && a === 'Infinity') return 0;
 
