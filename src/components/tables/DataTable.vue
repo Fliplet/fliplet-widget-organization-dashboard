@@ -48,7 +48,7 @@ export default {
     },
     sortParams: {
       type: Array,
-      default() {
+      default: function() {
         return [];
       }
     }
