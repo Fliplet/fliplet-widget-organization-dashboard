@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isDataTransformed">
-      <DataTable :columns="cols" :rows="rows"></DataTable>
+      <DataTable :sort-params="sortParams" :columns="cols" :rows="rows"></DataTable>
     </div>
   </div>
 </template>
@@ -75,6 +75,18 @@ export default {
       default() {
         return [];
       }
+    }
+  },
+  computed: {
+    sortParams: function() {
+      var targets = [];
+      var l = this.rows[0].length;
+
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') targets.push(i);
+      }
+
+      return [{ type: 'data', targets: targets }];
     }
   },
   methods: {

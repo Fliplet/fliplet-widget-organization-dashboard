@@ -14577,7 +14577,15 @@ var render = function() {
     _vm.isDataTransformed
       ? _c(
           "div",
-          [_c("DataTable", { attrs: { columns: _vm.cols, rows: _vm.rows } })],
+          [
+            _c("DataTable", {
+              attrs: {
+                "sort-params": _vm.sortParams,
+                columns: _vm.cols,
+                rows: _vm.rows
+              }
+            })
+          ],
           1
         )
       : _vm._e()
@@ -14666,6 +14674,21 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+    }
+  },
+  computed: {
+    sortParams: function sortParams() {
+      var targets = [];
+      var l = this.rows[0].length;
+
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') targets.push(i);
+      }
+
+      return [{
+        type: 'data',
+        targets: targets
+      }];
     }
   },
   methods: {
@@ -14921,10 +14944,34 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+    },
+    sortParams: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
     }
   },
   methods: {
     initTable: function initTable() {
+      $.fn.dataTableExt.type.order['data-asc'] = function (a, b) {
+        if (a === 'Infinity' && b !== 'Infinity') return 1;
+        if (b === 'Infinity' && a !== 'Infinity') return -1;
+        if (b === 'Infinity' && a === 'Infinity') return 0;
+        if (a > b) return 1;
+        if (a < b) return -1;
+        return 0;
+      };
+
+      $.fn.dataTableExt.type.order['data-desc'] = function (a, b) {
+        if (a === 'Infinity' && b !== 'Infinity') return 1;
+        if (b === 'Infinity' && a !== 'Infinity') return -1;
+        if (b === 'Infinity' && a === 'Infinity') return 0;
+        if (a > b) return -1;
+        if (a < b) return 1;
+        return 0;
+      };
+
       this.component = $(this.$refs.table).DataTable({
         scrollX: true,
         dom: 'Blfrtip',
@@ -14948,7 +14995,8 @@ __webpack_require__.r(__webpack_exports__);
           }
         }],
         lengthMenu: [10, 25, 50, 100, 500],
-        pageLength: 10
+        pageLength: 10,
+        columnDefs: this.sortParams
       });
       $(window).trigger('resize');
     },
@@ -16537,7 +16585,15 @@ var render = function() {
     _vm.isDataTransformed
       ? _c(
           "div",
-          [_c("DataTable", { attrs: { columns: _vm.cols, rows: _vm.rows } })],
+          [
+            _c("DataTable", {
+              attrs: {
+                "sort-params": _vm.sortParams,
+                columns: _vm.cols,
+                rows: _vm.rows
+              }
+            })
+          ],
           1
         )
       : _vm._e()
@@ -16614,6 +16670,21 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+    }
+  },
+  computed: {
+    sortParams: function sortParams() {
+      var targets = [];
+      var l = this.rows[0].length;
+
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') targets.push(i);
+      }
+
+      return [{
+        type: 'data',
+        targets: targets
+      }];
     }
   },
   methods: {
