@@ -16563,6 +16563,28 @@ var render = function() {
           linkedCalendars: false
         },
         on: { update: _vm.updateValues },
+        scopedSlots: _vm._u([
+          {
+            key: "input",
+            fn: function(picker) {
+              return [
+                _c("i", {
+                  staticClass: "glyphicon glyphicon-calendar fa fa-calendar"
+                }),
+                _vm._v(" "),
+                _c("span", [
+                  _vm._v(
+                    _vm._s(_vm._f("formatLocaleDate")(picker.startDate)) +
+                      " - " +
+                      _vm._s(_vm._f("formatLocaleDate")(picker.endDate))
+                  )
+                ]),
+                _vm._v(" "),
+                _c("b", { staticClass: "caret" })
+              ]
+            }
+          }
+        ]),
         model: {
           value: _vm.dateRange,
           callback: function($$v) {
@@ -16620,14 +16642,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
+var locale = navigator.language || 'en';
+Vue.filter('formatLocaleDate', function (date) {
+  return moment(date).locale(locale).format('ll');
+});
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var locale = navigator.language || 'en';
     var localeData = moment.localeData(locale);
-    var englishLocaleData = moment.localeData('en');
     var startDate = new Date();
     var endDate = new Date();
     startDate.setDate(endDate.getDate() - 30);
@@ -16638,10 +16667,11 @@ __webpack_require__.r(__webpack_exports__);
       },
       dateFormat: {
         direction: getComputedStyle(document.body).direction,
-        format: localeData.longDateFormat('ll').toLowerCase(),
+        format: 'mmm d, yyyy',
+        // Use localeData.longDateFormat('L').toLowerCase() for localization
         separator: ' – ',
-        daysOfWeek: englishLocaleData.weekdaysShort(),
-        monthNames: englishLocaleData.monthsShort(),
+        daysOfWeek: localeData.weekdaysShort(),
+        monthNames: localeData.monthsShort(),
         firstDay: localeData.firstDayOfWeek()
       },
       customDates: false

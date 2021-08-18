@@ -14,6 +14,11 @@
       :linkedCalendars=false
       :class="{ disabled: !isEnabled }"
     >
+      <template v-slot:input="picker">
+        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+        <span>{{ picker.startDate | formatLocaleDate }} - {{ picker.endDate | formatLocaleDate }}</span>
+        <b class="caret"></b>
+      </template>
     </date-range-picker>
   </div>
 </template>
@@ -23,11 +28,15 @@ import DateRangePicker from 'vue2-daterange-picker';
 import DateDropdown from './DateDropdown.vue';
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 
+const locale = navigator.language || 'en';
+
+Vue.filter('formatLocaleDate', (date) => {
+  return moment(date).locale(locale).format('ll');
+});
+
 export default {
   data() {
-    const locale = navigator.language || 'en';
     const localeData = moment.localeData(locale);
-    const englishLocaleData = moment.localeData('en');
 
     let startDate = new Date();
     let endDate = new Date();
@@ -41,10 +50,10 @@ export default {
       },
       dateFormat: {
         direction: getComputedStyle(document.body).direction,
-        format: localeData.longDateFormat('ll').toLowerCase(),
+        format: 'mmm d, yyyy', // Use localeData.longDateFormat('L').toLowerCase() for localization
         separator: ' – ',
-        daysOfWeek: englishLocaleData.weekdaysShort(),
-        monthNames: englishLocaleData.monthsShort(),
+        daysOfWeek: localeData.weekdaysShort(),
+        monthNames: localeData.monthsShort(),
         firstDay: localeData.firstDayOfWeek()
       },
       customDates: false
