@@ -14,9 +14,6 @@
       :linkedCalendars=false
       :class="{ disabled: !isEnabled }"
     >
-      <template v-slot:input="picker" style="min-width: 350px;">
-        {{ picker.startDate }} - {{ picker.endDate }}
-      </template>
     </date-range-picker>
   </div>
 </template>
@@ -28,6 +25,10 @@ import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 
 export default {
   data() {
+    const locale = navigator.language || 'en';
+    const localeData = moment.localeData(locale);
+    const englishLocaleData = moment.localeData('en');
+
     let startDate = new Date();
     let endDate = new Date();
 
@@ -39,8 +40,12 @@ export default {
         endDate
       },
       dateFormat: {
-        format: 'mmm d, yyyy',
-        separator: ' - '
+        direction: getComputedStyle(document.body).direction,
+        format: localeData.longDateFormat('ll').toLowerCase(),
+        separator: ' – ',
+        daysOfWeek: englishLocaleData.weekdaysShort(),
+        monthNames: englishLocaleData.monthsShort(),
+        firstDay: localeData.firstDayOfWeek()
       },
       customDates: false
     };
