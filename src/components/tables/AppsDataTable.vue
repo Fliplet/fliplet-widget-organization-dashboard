@@ -96,16 +96,16 @@ export default {
           [
             { value: { title: app.name, appId: app.id }, type: 'action' },
             { value: app.createdAt, type: 'date' },
-            { value: app.updatedAt, type: 'date'},
-            { value: app.publishedAt, type: 'date'},
-            { value: app.publishedAppleAt, type: 'date'},
-            { value: app.publishedGoogleAt, type: 'date'},
-            { value: app.publishedWebAt, type: 'date'},
-            { value: [app.stats.users.count, app.stats.users.previousPeriodCount], type: 'dynamic'},
-            { value: [app.stats.devices.count, app.stats.devices.previousPeriodCount], type: 'dynamic'},
-            { value: [app.stats.sessions.count, app.stats.sessions.previousPeriodCount], type: 'dynamic'},
-            { value: [app.stats.updates.count, app.stats.updates.previousPeriodCount], type: 'dynamic'},
-            { value: [app.stats.publishes.count, app.stats.publishes.previousPeriodCount], type: 'dynamic'}
+            { value: app.updatedAt, type: 'date' },
+            { value: app.publishedAt, type: 'date' },
+            { value: app.publishedAppleAt, type: 'date' },
+            { value: app.publishedGoogleAt, type: 'date' },
+            { value: app.publishedWebAt, type: 'date' },
+            { value: [app.stats.users.count, app.stats.users.previousPeriodCount], type: 'dynamic' },
+            { value: [app.stats.devices.count, app.stats.devices.previousPeriodCount], type: 'dynamic' },
+            { value: [app.stats.sessions.count, app.stats.sessions.previousPeriodCount], type: 'dynamic' },
+            { value: [app.stats.updates.count, app.stats.updates.previousPeriodCount], type: 'dynamic' },
+            { value: [app.stats.publishes.count, app.stats.publishes.previousPeriodCount], type: 'dynamic' }
           ]
         );
 

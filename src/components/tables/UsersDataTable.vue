@@ -79,8 +79,8 @@ export default {
         this.rows.push(
           [
             { value: { title: user.email, userId: user.id }, type: 'action' },
-            { value: user.lastSeenAt, type: 'date'},
-            { value: user.createdAt, type: 'date'},
+            { value: user.lastSeenAt, type: 'date' },
+            { value: user.createdAt, type: 'date' },
             { value: user.stats.studioSessions.count },
             { value: user.stats.viewerSessions.count },
             { value: user.stats.appPublishes.count },
