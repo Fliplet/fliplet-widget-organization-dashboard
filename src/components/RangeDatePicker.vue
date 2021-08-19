@@ -28,10 +28,14 @@ import DateRangePicker from 'vue2-daterange-picker';
 import DateDropdown from './DateDropdown.vue';
 import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 
-const locale = navigator.language || 'en';
+// Pick an English locale closest to the device/browser setting
+const locale = navigator.language.indexOf('en') === 0 ? navigator.language : 'en';
 
 Vue.filter('formatLocaleDate', (date) => {
-  return TD(date, { format: 'll' });
+  return TD(date, {
+    format: 'll',
+    locale
+  });
 });
 
 export default {
@@ -50,10 +54,7 @@ export default {
       },
       localeData: {
         direction: getComputedStyle(document.body).direction,
-        format: 'mmm d, yyyy',
         separator: ' – ',
-        daysOfWeek: localeData.weekdaysShort(),
-        monthNames: localeData.monthsShort(),
         firstDay: localeData.firstDayOfWeek()
       },
       customDates: false

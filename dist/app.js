@@ -16439,7 +16439,12 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     transformDate: function transformDate(date) {
-      return moment(date).format(moment().creationData().locale._longDateFormat.LL);
+      // Pick an English locale closest to the device/browser setting
+      var locale = navigator.language.indexOf('en') === 0 ? navigator.language : 'en';
+      return TD(date, {
+        format: 'll',
+        locale: locale
+      });
     },
     openUserProfile: function openUserProfile(options) {
       Fliplet.Studio.emit('overlay', {
@@ -16649,11 +16654,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
+ // Pick an English locale closest to the device/browser setting
 
-var locale = navigator.language || 'en';
+var locale = navigator.language.indexOf('en') === 0 ? navigator.language : 'en';
 Vue.filter('formatLocaleDate', function (date) {
   return TD(date, {
-    format: 'll'
+    format: 'll',
+    locale: locale
   });
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -16669,10 +16676,7 @@ Vue.filter('formatLocaleDate', function (date) {
       },
       localeData: {
         direction: getComputedStyle(document.body).direction,
-        format: 'mmm d, yyyy',
         separator: ' – ',
-        daysOfWeek: localeData.weekdaysShort(),
-        monthNames: localeData.monthsShort(),
         firstDay: localeData.firstDayOfWeek()
       },
       customDates: false
