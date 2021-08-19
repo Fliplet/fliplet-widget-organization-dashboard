@@ -70,7 +70,13 @@ export default {
       }
     },
     transformDate: function(date) {
-      return moment(date).format(moment().creationData().locale._longDateFormat.LL);
+      // Pick an English locale closest to the device/browser setting
+      const locale = navigator.language.indexOf('en') === 0 ? navigator.language : 'en';
+
+      return TD(date, {
+        format: 'll',
+        locale
+      });
     },
     openUserProfile: function(options) {
       Fliplet.Studio.emit('overlay', {
