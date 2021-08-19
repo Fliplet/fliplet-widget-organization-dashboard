@@ -16557,7 +16557,7 @@ var render = function() {
           opens: "left",
           "max-date": new Date(),
           disabled: !_vm.isEnabled,
-          "locale-data": _vm.dateFormat,
+          "locale-data": _vm.localeData,
           autoApply: true,
           ranges: false,
           linkedCalendars: false
@@ -16652,7 +16652,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var locale = navigator.language || 'en';
 Vue.filter('formatLocaleDate', function (date) {
-  return moment(date).locale(locale).format('ll');
+  return TD(date, {
+    format: 'll'
+  });
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -16665,10 +16667,9 @@ Vue.filter('formatLocaleDate', function (date) {
         startDate: startDate,
         endDate: endDate
       },
-      dateFormat: {
+      localeData: {
         direction: getComputedStyle(document.body).direction,
         format: 'mmm d, yyyy',
-        // Use localeData.longDateFormat('L').toLowerCase() for localization
         separator: ' – ',
         daysOfWeek: localeData.weekdaysShort(),
         monthNames: localeData.monthsShort(),
