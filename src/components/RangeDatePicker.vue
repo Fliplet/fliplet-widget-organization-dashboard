@@ -6,7 +6,7 @@
       opens="left"
       :max-date="new Date()"
       :disabled="!isEnabled"
-      :locale-data="dateFormat"
+      :locale-data="localeData"
       :autoApply=true
       :ranges=false
       v-model="dateRange"
@@ -31,7 +31,7 @@ import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
 const locale = navigator.language || 'en';
 
 Vue.filter('formatLocaleDate', (date) => {
-  return moment(date).locale(locale).format('ll');
+  return TD(date, { format: 'll' });
 });
 
 export default {
@@ -48,9 +48,9 @@ export default {
         startDate,
         endDate
       },
-      dateFormat: {
+      localeData: {
         direction: getComputedStyle(document.body).direction,
-        format: 'mmm d, yyyy', // Use localeData.longDateFormat('L').toLowerCase() for localization
+        format: 'mmm d, yyyy',
         separator: ' – ',
         daysOfWeek: localeData.weekdaysShort(),
         monthNames: localeData.monthsShort(),
