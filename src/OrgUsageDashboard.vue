@@ -1,5 +1,5 @@
 <template>
-  <div class="org-usage-dashboard">
+  <div class="org-usage-dashboard" :class="{ 'feature-unavailable': !this.featureAvailable }">
     <Message type="alert-info">
       <p>
         <strong>This feature is currently in beta.</strong>
@@ -52,7 +52,8 @@ export default {
       hasError: false,
       activeTab: 'apps',
       showDatePicker: false,
-      isDataPartiallyAvailable: false
+      isDataPartiallyAvailable: false,
+      featureAvailable: false
     };
   },
   components: {
@@ -98,13 +99,25 @@ export default {
   },
   created() {
     this.isLoading = true;
+
+    const widgetId = Fliplet.Widget.getDefaultId();
+    const widgetData = Fliplet.Widget.getData(widgetId) || {};
+
+    this.featureAvailable = !!widgetData.featureAvailable;
   },
   mounted() {
-    const startDate = moment().add(-1, 'month');
-    const endDate = moment();
+    // If feature is available set correct dates
+    // If not, set to dates in the future to display no data
+    const startDate = this.featureAvailable
+      ? moment().add(-1, 'month')
+      : moment().add(1, 'month');
+    const endDate = this.featureAvailable
+      ? moment()
+      : moment().add(2, 'month');
 
     this.init();
     this.loadData(startDate, endDate);
+
     Fliplet.Widget.autosize();
   },
   updated() {

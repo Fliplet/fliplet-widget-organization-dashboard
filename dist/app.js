@@ -14800,7 +14800,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "org-usage-dashboard" },
+    {
+      staticClass: "org-usage-dashboard",
+      class: { "feature-unavailable": !this.featureAvailable }
+    },
     [
       _c("Message", { attrs: { type: "alert-info" } }, [
         _c("p", [
@@ -15002,7 +15005,8 @@ __webpack_require__.r(__webpack_exports__);
       hasError: false,
       activeTab: 'apps',
       showDatePicker: false,
-      isDataPartiallyAvailable: false
+      isDataPartiallyAvailable: false,
+      featureAvailable: false
     };
   },
   components: {
@@ -15046,10 +15050,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.isLoading = true;
+    var widgetId = Fliplet.Widget.getDefaultId();
+    var widgetData = Fliplet.Widget.getData(widgetId) || {};
+    this.featureAvailable = !!widgetData.featureAvailable;
   },
   mounted: function mounted() {
-    var startDate = moment().add(-1, 'month');
-    var endDate = moment();
+    // If feature is available set correct dates
+    // If not, set to dates in the future to display no data
+    var startDate = this.featureAvailable ? moment().add(-1, 'month') : moment().add(1, 'month');
+    var endDate = this.featureAvailable ? moment() : moment().add(2, 'month');
     this.init();
     this.loadData(startDate, endDate);
     Fliplet.Widget.autosize();
