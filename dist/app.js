@@ -18052,191 +18052,191 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sampleData", function() { return sampleData; });
 var sampleData = {
   appSessions: [{
-    day: '2021-08-24',
+    day: moment().subtract(31, 'days').format('YYYY-MM-DD'),
     count: 150
   }, {
-    day: '2021-08-25',
+    day: moment().subtract(30, 'days').format('YYYY-MM-DD'),
     count: 185
   }, {
-    day: '2021-08-26',
+    day: moment().subtract(29, 'days').format('YYYY-MM-DD'),
     count: 88
   }, {
-    day: '2021-08-27',
+    day: moment().subtract(28, 'days').format('YYYY-MM-DD'),
     count: 164
   }, {
-    day: '2021-08-28',
+    day: moment().subtract(27, 'days').format('YYYY-MM-DD'),
     count: 107
   }, {
-    day: '2021-08-29',
+    day: moment().subtract(26, 'days').format('YYYY-MM-DD'),
     count: 93
   }, {
-    day: '2021-08-30',
+    day: moment().subtract(25, 'days').format('YYYY-MM-DD'),
     count: 103
   }, {
-    day: '2021-08-31',
+    day: moment().subtract(24, 'days').format('YYYY-MM-DD'),
     count: 186
   }, {
-    day: '2021-09-01',
+    day: moment().subtract(23, 'days').format('YYYY-MM-DD'),
     count: 165
   }, {
-    day: '2021-09-02',
+    day: moment().subtract(22, 'days').format('YYYY-MM-DD'),
     count: 175
   }, {
-    day: '2021-09-03',
+    day: moment().subtract(21, 'days').format('YYYY-MM-DD'),
     count: 147
   }, {
-    day: '2021-09-04',
+    day: moment().subtract(20, 'days').format('YYYY-MM-DD'),
     count: 103
   }, {
-    day: '2021-09-05',
+    day: moment().subtract(19, 'days').format('YYYY-MM-DD'),
     count: 99
   }, {
-    day: '2021-09-06',
+    day: moment().subtract(18, 'days').format('YYYY-MM-DD'),
     count: 126
   }, {
-    day: '2021-09-07',
+    day: moment().subtract(17, 'days').format('YYYY-MM-DD'),
     count: 208
   }, {
-    day: '2021-09-08',
+    day: moment().subtract(16, 'days').format('YYYY-MM-DD'),
     count: 197
   }, {
-    day: '2021-09-09',
+    day: moment().subtract(15, 'days').format('YYYY-MM-DD'),
     count: 235
   }, {
-    day: '2021-09-10',
+    day: moment().subtract(14, 'days').format('YYYY-MM-DD'),
     count: 219
   }, {
-    day: '2021-09-11',
+    day: moment().subtract(13, 'days').format('YYYY-MM-DD'),
     count: 112
   }, {
-    day: '2021-09-12',
+    day: moment().subtract(12, 'days').format('YYYY-MM-DD'),
     count: 98
   }, {
-    day: '2021-09-13',
+    day: moment().subtract(11, 'days').format('YYYY-MM-DD'),
     count: 169
   }, {
-    day: '2021-09-14',
+    day: moment().subtract(10, 'days').format('YYYY-MM-DD'),
     count: 161
   }, {
-    day: '2021-09-15',
+    day: moment().subtract(9, 'days').format('YYYY-MM-DD'),
     count: 151
   }, {
-    day: '2021-09-16',
+    day: moment().subtract(8, 'days').format('YYYY-MM-DD'),
     count: 181
   }, {
-    day: '2021-09-17',
+    day: moment().subtract(7, 'days').format('YYYY-MM-DD'),
     count: 169
   }, {
-    day: '2021-09-18',
+    day: moment().subtract(6, 'days').format('YYYY-MM-DD'),
     count: 117
   }, {
-    day: '2021-09-19',
+    day: moment().subtract(5, 'days').format('YYYY-MM-DD'),
     count: 94
   }, {
-    day: '2021-09-20',
+    day: moment().subtract(4, 'days').format('YYYY-MM-DD'),
     count: 198
   }, {
-    day: '2021-09-21',
+    day: moment().subtract(3, 'days').format('YYYY-MM-DD'),
     count: 243
   }, {
-    day: '2021-09-22',
+    day: moment().subtract(2, 'days').format('YYYY-MM-DD'),
     count: 203
   }, {
-    day: '2021-09-23',
+    day: moment().subtract(1, 'days').format('YYYY-MM-DD'),
     count: 267
   }],
   studioSessions: [{
-    day: '2021-08-24',
+    day: moment().subtract(31, 'days').format('YYYY-MM-DD'),
     count: 10
   }, {
-    day: '2021-08-25',
+    day: moment().subtract(30, 'days').format('YYYY-MM-DD'),
     count: 15
   }, {
-    day: '2021-08-26',
+    day: moment().subtract(29, 'days').format('YYYY-MM-DD'),
     count: 12
   }, {
-    day: '2021-08-27',
+    day: moment().subtract(28, 'days').format('YYYY-MM-DD'),
     count: 14
   }, {
-    day: '2021-08-28',
+    day: moment().subtract(27, 'days').format('YYYY-MM-DD'),
     count: 21
   }, {
-    day: '2021-08-29',
+    day: moment().subtract(26, 'days').format('YYYY-MM-DD'),
     count: 24
   }, {
-    day: '2021-08-30',
+    day: moment().subtract(25, 'days').format('YYYY-MM-DD'),
     count: 17
   }, {
-    day: '2021-08-31',
+    day: moment().subtract(24, 'days').format('YYYY-MM-DD'),
     count: 13
   }, {
-    day: '2021-09-01',
+    day: moment().subtract(23, 'days').format('YYYY-MM-DD'),
     count: 15
   }, {
-    day: '2021-09-02',
+    day: moment().subtract(22, 'days').format('YYYY-MM-DD'),
     count: 28
   }, {
-    day: '2021-09-03',
+    day: moment().subtract(21, 'days').format('YYYY-MM-DD'),
     count: 22
   }, {
-    day: '2021-09-04',
+    day: moment().subtract(20, 'days').format('YYYY-MM-DD'),
     count: 37
   }, {
-    day: '2021-09-05',
+    day: moment().subtract(19, 'days').format('YYYY-MM-DD'),
     count: 7
   }, {
-    day: '2021-09-06',
+    day: moment().subtract(18, 'days').format('YYYY-MM-DD'),
     count: 8
   }, {
-    day: '2021-09-07',
+    day: moment().subtract(17, 'days').format('YYYY-MM-DD'),
     count: 11
   }, {
-    day: '2021-09-08',
+    day: moment().subtract(16, 'days').format('YYYY-MM-DD'),
     count: 12
   }, {
-    day: '2021-09-09',
+    day: moment().subtract(15, 'days').format('YYYY-MM-DD'),
     count: 10
   }, {
-    day: '2021-09-10',
+    day: moment().subtract(14, 'days').format('YYYY-MM-DD'),
     count: 32
   }, {
-    day: '2021-09-11',
+    day: moment().subtract(13, 'days').format('YYYY-MM-DD'),
     count: 23
   }, {
-    day: '2021-09-12',
+    day: moment().subtract(12, 'days').format('YYYY-MM-DD'),
     count: 20
   }, {
-    day: '2021-09-13',
+    day: moment().subtract(11, 'days').format('YYYY-MM-DD'),
     count: 18
   }, {
-    day: '2021-09-14',
+    day: moment().subtract(10, 'days').format('YYYY-MM-DD'),
     count: 15
   }, {
-    day: '2021-09-15',
+    day: moment().subtract(9, 'days').format('YYYY-MM-DD'),
     count: 7
   }, {
-    day: '2021-09-16',
+    day: moment().subtract(8, 'days').format('YYYY-MM-DD'),
     count: 6
   }, {
-    day: '2021-09-17',
+    day: moment().subtract(7, 'days').format('YYYY-MM-DD'),
     count: 10
   }, {
-    day: '2021-09-18',
+    day: moment().subtract(6, 'days').format('YYYY-MM-DD'),
     count: 12
   }, {
-    day: '2021-09-19',
+    day: moment().subtract(5, 'days').format('YYYY-MM-DD'),
     count: 14
   }, {
-    day: '2021-09-20',
+    day: moment().subtract(4, 'days').format('YYYY-MM-DD'),
     count: 24
   }, {
-    day: '2021-09-21',
+    day: moment().subtract(3, 'days').format('YYYY-MM-DD'),
     count: 20
   }, {
-    day: '2021-09-22',
+    day: moment().subtract(2, 'days').format('YYYY-MM-DD'),
     count: 27
   }, {
-    day: '2021-09-23',
+    day: moment().subtract(1, 'days').format('YYYY-MM-DD'),
     count: 36
   }],
   stats: {
