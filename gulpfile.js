@@ -7,6 +7,7 @@ const webpackConfig = require('./config/webpack.config.js');
 const named = require('vinyl-named');
 const vueify = require('gulp-vueify2');
 const sass = require('gulp-sass');
+
 sass.compiler = require('node-sass');
 
 // Clean assets
@@ -36,6 +37,7 @@ function js() {
 function watchFiles() {
   gulp.watch('src/scss/**/*', scss);
   gulp.watch('src/main.js', js);
+  gulp.watch('src/config/*.js', js);
   gulp.watch('src/store/index.js', js);
   gulp.watch('src/**/*.vue', js);
 }

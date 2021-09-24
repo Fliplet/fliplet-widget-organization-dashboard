@@ -42,6 +42,7 @@ import getAnalyticsData, { handleSessions } from './services/analytics';
 import AnalyticsChart from './components/AnalyticsChart';
 import UsersDataTable from './components/tables/UsersDataTable';
 import Message from './components/Message';
+import { sampleData } from './config/sample-data';
 
 export default {
   data() {
@@ -69,7 +70,11 @@ export default {
       this.isLoading = true;
       this.isDataPartiallyAvailable = moment(startDate).isBefore('2020-06-24');
 
-      getAnalyticsData(startDate, endDate)
+      const getAnalytics = this.featureAvailable
+        ? getAnalyticsData(startDate, endDate)
+        : Promise.resolve(sampleData);
+
+      getAnalytics
         .then(result => {
           result.appSessions = handleSessions(startDate, endDate, result.appSessions);
           result.studioSessions = handleSessions(startDate, endDate, result.studioSessions);
@@ -106,14 +111,8 @@ export default {
     this.featureAvailable = !!widgetData.featureAvailable;
   },
   mounted() {
-    // If feature is available set correct dates
-    // If not, set to dates in the future to display no data
-    const startDate = this.featureAvailable
-      ? moment().add(-1, 'month')
-      : moment().add(1, 'month');
-    const endDate = this.featureAvailable
-      ? moment()
-      : moment().add(2, 'month');
+    const startDate = moment().add(-1, 'month');
+    const endDate = moment();
 
     this.init();
     this.loadData(startDate, endDate);
