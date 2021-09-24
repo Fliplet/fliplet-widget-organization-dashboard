@@ -54,7 +54,7 @@ export default {
       activeTab: 'apps',
       showDatePicker: false,
       isDataPartiallyAvailable: false,
-      featureAvailable: false
+      featureAvailable: true
     };
   },
   components: {
@@ -108,7 +108,9 @@ export default {
     const widgetId = Fliplet.Widget.getDefaultId();
     const widgetData = Fliplet.Widget.getData(widgetId) || {};
 
-    this.featureAvailable = !!widgetData.featureAvailable;
+    this.featureAvailable = widgetData.hasOwnProperty('featureAvailable')
+      ? !!widgetData.featureAvailable
+      : this.featureAvailable;
   },
   mounted() {
     const startDate = moment().add(-1, 'month');

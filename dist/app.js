@@ -15005,7 +15005,7 @@ __webpack_require__.r(__webpack_exports__);
       activeTab: 'apps',
       showDatePicker: false,
       isDataPartiallyAvailable: false,
-      featureAvailable: false
+      featureAvailable: true
     };
   },
   components: {
@@ -15052,7 +15052,7 @@ __webpack_require__.r(__webpack_exports__);
     this.isLoading = true;
     var widgetId = Fliplet.Widget.getDefaultId();
     var widgetData = Fliplet.Widget.getData(widgetId) || {};
-    this.featureAvailable = !!widgetData.featureAvailable;
+    this.featureAvailable = widgetData.hasOwnProperty('featureAvailable') ? !!widgetData.featureAvailable : this.featureAvailable;
   },
   mounted: function mounted() {
     var startDate = moment().add(-1, 'month');
