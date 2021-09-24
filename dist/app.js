@@ -14800,10 +14800,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "org-usage-dashboard",
-      class: { "feature-unavailable": !this.featureAvailable }
-    },
+    { staticClass: "org-usage-dashboard" },
     [
       _c("Message", { attrs: { type: "alert-info" } }, [
         _c("p", [

@@ -1,5 +1,5 @@
 <template>
-  <div class="org-usage-dashboard" :class="{ 'feature-unavailable': !this.featureAvailable }">
+  <div class="org-usage-dashboard">
     <Message type="alert-info">
       <p>
         <strong>This feature is currently in beta.</strong>
