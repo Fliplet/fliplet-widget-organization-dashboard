@@ -1,10 +1,7 @@
 export const sampleData = {
   appSessions: [{
-    day: moment().subtract(31, 'days').format('YYYY-MM-DD'),
-    count: 150
-  }, {
     day: moment().subtract(30, 'days').format('YYYY-MM-DD'),
-    count: 185
+    count: 78
   }, {
     day: moment().subtract(29, 'days').format('YYYY-MM-DD'),
     count: 88
@@ -92,11 +89,11 @@ export const sampleData = {
   }, {
     day: moment().subtract(1, 'days').format('YYYY-MM-DD'),
     count: 267
+  }, {
+    day: moment().format('YYYY-MM-DD'),
+    count: 150
   }],
   studioSessions: [{
-    day: moment().subtract(31, 'days').format('YYYY-MM-DD'),
-    count: 10
-  }, {
     day: moment().subtract(30, 'days').format('YYYY-MM-DD'),
     count: 15
   }, {
@@ -186,6 +183,9 @@ export const sampleData = {
   }, {
     day: moment().subtract(1, 'days').format('YYYY-MM-DD'),
     count: 36
+  }, {
+    day: moment().format('YYYY-MM-DD'),
+    count: 10
   }],
   stats: {
     uniqueAppUsers: {
