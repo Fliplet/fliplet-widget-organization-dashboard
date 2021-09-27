@@ -14950,6 +14950,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AnalyticsChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(464);
 /* harmony import */ var _components_tables_UsersDataTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(469);
 /* harmony import */ var _components_Message__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(474);
+/* harmony import */ var _config_sample_data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(479);
 //
 //
 //
@@ -14986,6 +14987,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -15002,7 +15004,8 @@ __webpack_require__.r(__webpack_exports__);
       hasError: false,
       activeTab: 'apps',
       showDatePicker: false,
-      isDataPartiallyAvailable: false
+      isDataPartiallyAvailable: false,
+      featureAvailable: true
     };
   },
   components: {
@@ -15019,7 +15022,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.isLoading = true;
       this.isDataPartiallyAvailable = moment(startDate).isBefore('2020-06-24');
-      Object(_services_analytics__WEBPACK_IMPORTED_MODULE_3__["default"])(startDate, endDate).then(function (result) {
+      var getAnalytics = this.featureAvailable ? Object(_services_analytics__WEBPACK_IMPORTED_MODULE_3__["default"])(startDate, endDate) : Promise.resolve(_config_sample_data__WEBPACK_IMPORTED_MODULE_7__["default"]);
+      getAnalytics.then(function (result) {
         result.appSessions = Object(_services_analytics__WEBPACK_IMPORTED_MODULE_3__["handleSessions"])(startDate, endDate, result.appSessions);
         result.studioSessions = Object(_services_analytics__WEBPACK_IMPORTED_MODULE_3__["handleSessions"])(startDate, endDate, result.studioSessions);
         _this.analyticsData = result;
@@ -15046,6 +15050,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.isLoading = true;
+    var widgetId = Fliplet.Widget.getDefaultId();
+    var widgetData = Fliplet.Widget.getData(widgetId) || {};
+    this.featureAvailable = widgetData.hasOwnProperty('featureAvailable') ? !!widgetData.featureAvailable : this.featureAvailable;
   },
   mounted: function mounted() {
     var startDate = moment().add(-1, 'month');
@@ -18035,6 +18042,305 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+
+/***/ }),
+/* 479 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var sampleData = {
+  appSessions: [{
+    count: 78
+  }, {
+    count: 88
+  }, {
+    count: 164
+  }, {
+    count: 107
+  }, {
+    count: 93
+  }, {
+    count: 103
+  }, {
+    count: 186
+  }, {
+    count: 165
+  }, {
+    count: 175
+  }, {
+    count: 147
+  }, {
+    count: 103
+  }, {
+    count: 99
+  }, {
+    count: 126
+  }, {
+    count: 208
+  }, {
+    count: 197
+  }, {
+    count: 235
+  }, {
+    count: 219
+  }, {
+    count: 112
+  }, {
+    count: 98
+  }, {
+    count: 169
+  }, {
+    count: 161
+  }, {
+    count: 151
+  }, {
+    count: 181
+  }, {
+    count: 169
+  }, {
+    count: 117
+  }, {
+    count: 94
+  }, {
+    count: 198
+  }, {
+    count: 243
+  }, {
+    count: 203
+  }, {
+    count: 267
+  }, {
+    count: 150
+  }],
+  studioSessions: [{
+    count: 15
+  }, {
+    count: 12
+  }, {
+    count: 14
+  }, {
+    count: 21
+  }, {
+    count: 24
+  }, {
+    count: 17
+  }, {
+    count: 13
+  }, {
+    count: 15
+  }, {
+    count: 28
+  }, {
+    count: 22
+  }, {
+    count: 37
+  }, {
+    count: 7
+  }, {
+    count: 8
+  }, {
+    count: 11
+  }, {
+    count: 12
+  }, {
+    count: 10
+  }, {
+    count: 32
+  }, {
+    count: 23
+  }, {
+    count: 20
+  }, {
+    count: 18
+  }, {
+    count: 15
+  }, {
+    count: 7
+  }, {
+    count: 6
+  }, {
+    count: 10
+  }, {
+    count: 12
+  }, {
+    count: 14
+  }, {
+    count: 24
+  }, {
+    count: 20
+  }, {
+    count: 27
+  }, {
+    count: 36
+  }, {
+    count: 10
+  }],
+  stats: {
+    uniqueAppUsers: {
+      count: 50,
+      previousPeriodCount: 35
+    },
+    totalAppUsers: {
+      count: 60,
+      previousPeriodCount: 40
+    },
+    appSessions: {
+      count: 4913,
+      previousPeriodCount: 5000
+    },
+    studioSessions: {
+      count: 430,
+      previousPeriodCount: 500
+    },
+    studioUsers: {
+      count: 2,
+      previousPeriodCount: 1
+    },
+    newStudioUsers: {
+      count: 1,
+      previousPeriodCount: 0
+    },
+    appsCreated: {
+      count: 2,
+      previousPeriodCount: 1
+    },
+    appsEdited: {
+      count: 1,
+      previousPeriodCount: 1
+    },
+    appsPublished: {
+      count: 1,
+      previousPeriodCount: 0
+    }
+  },
+  apps: [{
+    id: 1,
+    name: 'First app',
+    createdAt: moment().subtract(15, 'days').utc().format(),
+    updatedAt: moment().subtract(12, 'days').utc().format(),
+    publishedAt: moment().subtract(5, 'days').utc().format(),
+    publishedAppleAt: null,
+    publishedGoogleAt: null,
+    publishedWebAt: moment().subtract(5, 'days').utc().format(),
+    stats: {
+      users: {
+        count: 50,
+        previousPeriodCount: 35
+      },
+      sessions: {
+        count: 3500,
+        previousPeriodCount: 4000
+      },
+      devices: {
+        count: 60,
+        previousPeriodCount: 40
+      },
+      updates: {
+        count: 4,
+        previousPeriodCount: 2
+      },
+      publishes: {
+        count: 2,
+        previousPeriodCount: 1
+      }
+    }
+  }, {
+    id: 2,
+    name: 'Second app',
+    createdAt: moment().subtract(5, 'days').utc().format(),
+    updatedAt: moment().subtract(2, 'days').utc().format(),
+    publishedAt: null,
+    publishedAppleAt: null,
+    publishedGoogleAt: null,
+    publishedWebAt: null,
+    stats: {
+      users: {
+        count: 0,
+        previousPeriodCount: 0
+      },
+      sessions: {
+        count: 0,
+        previousPeriodCount: 0
+      },
+      devices: {
+        count: 0,
+        previousPeriodCount: 0
+      },
+      updates: {
+        count: 0,
+        previousPeriodCount: 0
+      },
+      publishes: {
+        count: 0,
+        previousPeriodCount: 0
+      }
+    }
+  }],
+  users: [{
+    id: 2,
+    email: 'user-2@fliplet.com',
+    lastSeenAt: moment().subtract(1, 'days').utc().format(),
+    createdAt: moment().subtract(16, 'days').utc().format(),
+    stats: {
+      studioSessions: {
+        count: 250
+      },
+      viewerSessions: {
+        count: 2
+      },
+      appPublishes: {
+        count: 1
+      },
+      appsAvailable: {
+        count: 1
+      },
+      appsCreated: {
+        count: 0
+      }
+    }
+  }, {
+    id: 1,
+    email: 'user-2@fliplet.com',
+    lastSeenAt: moment().subtract(2, 'days').utc().format(),
+    createdAt: moment().subtract(5, 'days').utc().format(),
+    stats: {
+      studioSessions: {
+        count: 400
+      },
+      viewerSessions: {
+        count: 5
+      },
+      appPublishes: {
+        count: 1
+      },
+      appsAvailable: {
+        count: 2
+      },
+      appsCreated: {
+        count: 2
+      }
+    }
+  }]
+};
+
+function addSampleDates(data) {
+  for (var i = 0; i < data.length; i++) {
+    var subtractDayIndex = i + 1;
+
+    if (i === data.length) {
+      data[i].day = moment().format('YYYY-MM-DD');
+    } else {
+      data[i].day = moment().subtract(data.length - subtractDayIndex, 'days').format('YYYY-MM-DD');
+    }
+  }
+
+  return data;
+}
+
+sampleData.appSessions = addSampleDates(sampleData.appSessions);
+sampleData.studioSessions = addSampleDates(sampleData.studioSessions);
+/* harmony default export */ __webpack_exports__["default"] = (sampleData);
 
 /***/ })
 /******/ ]);
