@@ -42,7 +42,7 @@ import getAnalyticsData, { handleSessions } from './services/analytics';
 import AnalyticsChart from './components/AnalyticsChart';
 import UsersDataTable from './components/tables/UsersDataTable';
 import Message from './components/Message';
-import { sampleData } from './config/sample-data';
+import sampleData from './config/sample-data';
 
 export default {
   data() {

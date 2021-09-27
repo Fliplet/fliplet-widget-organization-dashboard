@@ -1,190 +1,128 @@
-export const sampleData = {
+const sampleData = {
   appSessions: [{
-    day: moment().subtract(30, 'days').format('YYYY-MM-DD'),
     count: 78
   }, {
-    day: moment().subtract(29, 'days').format('YYYY-MM-DD'),
     count: 88
   }, {
-    day: moment().subtract(28, 'days').format('YYYY-MM-DD'),
     count: 164
   }, {
-    day: moment().subtract(27, 'days').format('YYYY-MM-DD'),
     count: 107
   }, {
-    day: moment().subtract(26, 'days').format('YYYY-MM-DD'),
     count: 93
   }, {
-    day: moment().subtract(25, 'days').format('YYYY-MM-DD'),
     count: 103
   }, {
-    day: moment().subtract(24, 'days').format('YYYY-MM-DD'),
     count: 186
   }, {
-    day: moment().subtract(23, 'days').format('YYYY-MM-DD'),
     count: 165
   }, {
-    day: moment().subtract(22, 'days').format('YYYY-MM-DD'),
     count: 175
   }, {
-    day: moment().subtract(21, 'days').format('YYYY-MM-DD'),
     count: 147
   }, {
-    day: moment().subtract(20, 'days').format('YYYY-MM-DD'),
     count: 103
   }, {
-    day: moment().subtract(19, 'days').format('YYYY-MM-DD'),
     count: 99
   }, {
-    day: moment().subtract(18, 'days').format('YYYY-MM-DD'),
     count: 126
   }, {
-    day: moment().subtract(17, 'days').format('YYYY-MM-DD'),
     count: 208
   }, {
-    day: moment().subtract(16, 'days').format('YYYY-MM-DD'),
     count: 197
   }, {
-    day: moment().subtract(15, 'days').format('YYYY-MM-DD'),
     count: 235
   }, {
-    day: moment().subtract(14, 'days').format('YYYY-MM-DD'),
     count: 219
   }, {
-    day: moment().subtract(13, 'days').format('YYYY-MM-DD'),
     count: 112
   }, {
-    day: moment().subtract(12, 'days').format('YYYY-MM-DD'),
     count: 98
   }, {
-    day: moment().subtract(11, 'days').format('YYYY-MM-DD'),
     count: 169
   }, {
-    day: moment().subtract(10, 'days').format('YYYY-MM-DD'),
     count: 161
   }, {
-    day: moment().subtract(9, 'days').format('YYYY-MM-DD'),
     count: 151
   }, {
-    day: moment().subtract(8, 'days').format('YYYY-MM-DD'),
     count: 181
   }, {
-    day: moment().subtract(7, 'days').format('YYYY-MM-DD'),
     count: 169
   }, {
-    day: moment().subtract(6, 'days').format('YYYY-MM-DD'),
     count: 117
   }, {
-    day: moment().subtract(5, 'days').format('YYYY-MM-DD'),
     count: 94
   }, {
-    day: moment().subtract(4, 'days').format('YYYY-MM-DD'),
     count: 198
   }, {
-    day: moment().subtract(3, 'days').format('YYYY-MM-DD'),
     count: 243
   }, {
-    day: moment().subtract(2, 'days').format('YYYY-MM-DD'),
     count: 203
   }, {
-    day: moment().subtract(1, 'days').format('YYYY-MM-DD'),
     count: 267
   }, {
-    day: moment().format('YYYY-MM-DD'),
     count: 150
   }],
   studioSessions: [{
-    day: moment().subtract(30, 'days').format('YYYY-MM-DD'),
     count: 15
   }, {
-    day: moment().subtract(29, 'days').format('YYYY-MM-DD'),
     count: 12
   }, {
-    day: moment().subtract(28, 'days').format('YYYY-MM-DD'),
     count: 14
   }, {
-    day: moment().subtract(27, 'days').format('YYYY-MM-DD'),
     count: 21
   }, {
-    day: moment().subtract(26, 'days').format('YYYY-MM-DD'),
     count: 24
   }, {
-    day: moment().subtract(25, 'days').format('YYYY-MM-DD'),
     count: 17
   }, {
-    day: moment().subtract(24, 'days').format('YYYY-MM-DD'),
     count: 13
   }, {
-    day: moment().subtract(23, 'days').format('YYYY-MM-DD'),
     count: 15
   }, {
-    day: moment().subtract(22, 'days').format('YYYY-MM-DD'),
     count: 28
   }, {
-    day: moment().subtract(21, 'days').format('YYYY-MM-DD'),
     count: 22
   }, {
-    day: moment().subtract(20, 'days').format('YYYY-MM-DD'),
     count: 37
   }, {
-    day: moment().subtract(19, 'days').format('YYYY-MM-DD'),
     count: 7
   }, {
-    day: moment().subtract(18, 'days').format('YYYY-MM-DD'),
     count: 8
   }, {
-    day: moment().subtract(17, 'days').format('YYYY-MM-DD'),
     count: 11
   }, {
-    day: moment().subtract(16, 'days').format('YYYY-MM-DD'),
     count: 12
   }, {
-    day: moment().subtract(15, 'days').format('YYYY-MM-DD'),
     count: 10
   }, {
-    day: moment().subtract(14, 'days').format('YYYY-MM-DD'),
     count: 32
   }, {
-    day: moment().subtract(13, 'days').format('YYYY-MM-DD'),
     count: 23
   }, {
-    day: moment().subtract(12, 'days').format('YYYY-MM-DD'),
     count: 20
   }, {
-    day: moment().subtract(11, 'days').format('YYYY-MM-DD'),
     count: 18
   }, {
-    day: moment().subtract(10, 'days').format('YYYY-MM-DD'),
     count: 15
   }, {
-    day: moment().subtract(9, 'days').format('YYYY-MM-DD'),
     count: 7
   }, {
-    day: moment().subtract(8, 'days').format('YYYY-MM-DD'),
     count: 6
   }, {
-    day: moment().subtract(7, 'days').format('YYYY-MM-DD'),
     count: 10
   }, {
-    day: moment().subtract(6, 'days').format('YYYY-MM-DD'),
     count: 12
   }, {
-    day: moment().subtract(5, 'days').format('YYYY-MM-DD'),
     count: 14
   }, {
-    day: moment().subtract(4, 'days').format('YYYY-MM-DD'),
     count: 24
   }, {
-    day: moment().subtract(3, 'days').format('YYYY-MM-DD'),
     count: 20
   }, {
-    day: moment().subtract(2, 'days').format('YYYY-MM-DD'),
     count: 27
   }, {
-    day: moment().subtract(1, 'days').format('YYYY-MM-DD'),
     count: 36
   }, {
-    day: moment().format('YYYY-MM-DD'),
     count: 10
   }],
   stats: {
@@ -228,12 +166,12 @@ export const sampleData = {
   apps: [{
     id: 1,
     name: 'First app',
-    createdAt: '2021-09-07T11:27:08.321Z',
-    updatedAt: '2021-09-07T11:53:06.224Z',
-    publishedAt: '2021-09-07T11:53:06.221Z',
+    createdAt: moment().subtract(15, 'days').utc().format(),
+    updatedAt: moment().subtract(12, 'days').utc().format(),
+    publishedAt: moment().subtract(5, 'days').utc().format(),
     publishedAppleAt: null,
     publishedGoogleAt: null,
-    publishedWebAt: '2021-09-07T11:30:28.389Z',
+    publishedWebAt: moment().subtract(5, 'days').utc().format(),
     stats: {
       users: {
         count: 50,
@@ -259,8 +197,8 @@ export const sampleData = {
   }, {
     id: 2,
     name: 'Second app',
-    createdAt: '2021-09-13T14:43:45.366Z',
-    updatedAt: '2021-09-13T15:42:07.281Z',
+    createdAt: moment().subtract(5, 'days').utc().format(),
+    updatedAt: moment().subtract(2, 'days').utc().format(),
     publishedAt: null,
     publishedAppleAt: null,
     publishedGoogleAt: null,
@@ -291,8 +229,8 @@ export const sampleData = {
   users: [{
     id: 2,
     email: 'user-2@fliplet.com',
-    lastSeenAt: '2021-09-24T13:47:07.393Z',
-    createdAt: '2021-09-20T14:16:40.190Z',
+    lastSeenAt: moment().subtract(1, 'days').utc().format(),
+    createdAt: moment().subtract(16, 'days').utc().format(),
     stats: {
       studioSessions: {
         count: 250
@@ -313,8 +251,8 @@ export const sampleData = {
   }, {
     id: 1,
     email: 'user-2@fliplet.com',
-    lastSeenAt: '2021-09-24T13:47:07.393Z',
-    createdAt: '2021-09-07T11:26:21.885Z',
+    lastSeenAt: moment().subtract(2, 'days').utc().format(),
+    createdAt: moment().subtract(5, 'days').utc().format(),
     stats: {
       studioSessions: {
         count: 400
@@ -334,3 +272,23 @@ export const sampleData = {
     }
   }]
 };
+
+
+function addSampleDates(data) {
+  for (let i = 0; i < data.length; i++) {
+    const subtractDayIndex = i + 1;
+
+    if (i === data.length) {
+      data[i].day = moment().format('YYYY-MM-DD');
+    } else {
+      data[i].day = moment().subtract(data.length - subtractDayIndex, 'days').format('YYYY-MM-DD');
+    }
+  }
+
+  return data;
+}
+
+sampleData.appSessions = addSampleDates(sampleData.appSessions);
+sampleData.studioSessions = addSampleDates(sampleData.studioSessions);
+
+export default sampleData;
