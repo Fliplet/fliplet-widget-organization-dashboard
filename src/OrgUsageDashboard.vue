@@ -1,12 +1,5 @@
 <template>
   <div class="org-usage-dashboard">
-    <Message type="alert-info">
-      <p>
-        <strong>This feature is currently in beta.</strong>
-        We are actively refining the functionality and collecting feedback. If you have any questions please
-        <a href='#' @click="openChatOverlay">contact us</a>.
-      </p>
-    </Message>
     <RangeDatePicker :onChange="loadData" :isEnabled="!isLoading" v-if="showDatePicker"></RangeDatePicker>
     <div v-if="this.isLoading" class="spinner-holder animated">
       <div class="spinner-overlay"></div>
@@ -97,9 +90,6 @@ export default {
           }, 500);
         }
       });
-    },
-    openChatOverlay: function() {
-      Fliplet.Studio.emit('open-live-chat');
     }
   },
   created() {
