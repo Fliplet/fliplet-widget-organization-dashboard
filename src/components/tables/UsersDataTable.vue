@@ -34,7 +34,7 @@ export default {
           help: 'The number of Fliplet Viewer sessions the user has. \n A session is a group of interactions without 30 min of inactivity.'
         },
         {
-          name: 'App Publishes',
+          name: 'App publishes',
           help: 'The number of times the user has published an app updated in Studio'
         },
         {
