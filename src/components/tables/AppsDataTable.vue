@@ -22,7 +22,7 @@ export default {
           help: 'The date the app was created in Studio'
         },
         {
-          name: 'Last Edit',
+          name: 'Last edit',
           help: 'The date a screen was last editing in Studio'
         },
         {

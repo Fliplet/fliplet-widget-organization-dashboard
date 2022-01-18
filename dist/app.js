@@ -16164,7 +16164,7 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Created',
         help: 'The date the app was created in Studio'
       }, {
-        name: 'Last Edit',
+        name: 'Last edit',
         help: 'The date a screen was last editing in Studio'
       }, {
         name: 'Last publish',
@@ -18204,7 +18204,7 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Viewer sessions',
         help: 'The number of Fliplet Viewer sessions the user has. \n A session is a group of interactions without 30 min of inactivity.'
       }, {
-        name: 'App Publishes',
+        name: 'App publishes',
         help: 'The number of times the user has published an app updated in Studio'
       }, {
         name: 'Apps available',
