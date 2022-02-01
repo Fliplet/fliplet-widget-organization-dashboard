@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isDataTransformed">
-      <DataTable :columns="cols" :rows="rows"></DataTable>
+      <DataTable :sort-params="sortParams" :columns="cols" :rows="rows"></DataTable>
     </div>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
           help: 'The number of Fliplet Viewer sessions the user has. \n A session is a group of interactions without 30 min of inactivity.'
         },
         {
-          name: 'App Publishes',
+          name: 'App publishes',
           help: 'The number of times the user has published an app updated in Studio'
         },
         {
@@ -61,14 +61,26 @@ export default {
       }
     }
   },
+  computed: {
+    sortParams: function() {
+      var targets = [];
+      var l = this.rows[0].length;
+
+      for (var i = 0; i < l; i++) {
+        if (this.rows[0][i].type === 'date') targets.push(i);
+      }
+
+      return [{ type: 'data', targets: targets }];
+    }
+  },
   methods: {
     transformData: function() {
       this.users.forEach(user => {
         this.rows.push(
           [
             { value: { title: user.email, userId: user.id }, type: 'action' },
-            { value: user.lastSeenAt, type: 'date'},
-            { value: user.createdAt, type: 'date'},
+            { value: user.lastSeenAt, type: 'date' },
+            { value: user.createdAt, type: 'date' },
             { value: user.stats.studioSessions.count },
             { value: user.stats.viewerSessions.count },
             { value: user.stats.appPublishes.count },

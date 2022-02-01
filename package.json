@@ -11,7 +11,7 @@
   "dependencies": {
     "regenerator-runtime": "^0.13.2",
     "core-js": "^3.1.4",
-    "vue2-daterange-picker": "^0.5.1"
+    "vue2-daterange-picker": "^0.6.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -24,7 +24,7 @@
     "css-loader": "^3.0.0",
     "del": "^4.1.1",
     "eslint": "^6.8.0",
-    "eslint-config-fliplet": "^0.7.0",
+    "eslint-config-fliplet": "^1.0.7",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-vue": "^6.1.2",
     "faker": "^4.1.0",
