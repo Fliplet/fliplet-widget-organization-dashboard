@@ -116,7 +116,7 @@ export default {
       }
 
       if (dataCell.type && dataCell.type === 'dynamic') {
-        return $(node).find('p').text();
+        return parseFloat($(node).find('p').text().replace(/,/g, ''));
       }
 
       return node.innerText;
