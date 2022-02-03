@@ -18577,7 +18577,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (dataCell.type && dataCell.type === 'dynamic') {
-        return parseFloat($(node).find('p').text().replace(/,/g, ''));
+        return $(node).find('p').data('value');
       }
 
       return node.innerText;
@@ -18666,7 +18666,7 @@ var render = function () {
       ? _c("span", [_vm._v(_vm._s(this.transformDate(_vm.cellValue)))])
       : _vm.cellType === "dynamic"
       ? _c("div", { staticClass: "multiline-cell" }, [
-          _c("p", [
+          _c("p", { attrs: { "data-value": _vm.cellValue[0] } }, [
             _vm._v(
               "\n      " +
                 _vm._s(_vm.cellValue[0].toLocaleString("en")) +
