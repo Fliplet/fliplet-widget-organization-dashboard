@@ -18577,7 +18577,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (dataCell.type && dataCell.type === 'dynamic') {
-        return $(node).find('p').data('value');
+        return node.dataset.value;
       }
 
       return node.innerText;
