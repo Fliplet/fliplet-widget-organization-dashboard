@@ -116,7 +116,7 @@ export default {
       }
 
       if (dataCell.type && dataCell.type === 'dynamic') {
-        return $(node).find('p').data('value');
+        return node.dataset.value;
       }
 
       return node.innerText;
