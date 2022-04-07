@@ -18659,73 +18659,83 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("td", { attrs: { "data-order": _vm.orderValue() } }, [
-    !_vm.cellValue && _vm.cellValue !== 0
-      ? _c("span", [_vm._v("—")])
-      : _vm.cellType === "date"
-      ? _c("span", [_vm._v(_vm._s(this.transformDate(_vm.cellValue)))])
-      : _vm.cellType === "dynamic"
-      ? _c("div", { staticClass: "multiline-cell" }, [
-          _c("p", { attrs: { "data-value": _vm.cellValue[0] } }, [
-            _vm._v(
-              "\n      " +
-                _vm._s(_vm.cellValue[0].toLocaleString("en")) +
-                "\n    "
-            ),
-          ]),
-          _vm._v(" "),
-          _vm.cellValue[0] === _vm.cellValue[1]
-            ? _c("small", [_vm._v("(" + _vm._s(_vm.perсent) + ")")])
-            : _vm.cellValue[0] > _vm.cellValue[1]
-            ? _c("small", { staticClass: "text-success" }, [
-                _vm._v("(↑" + _vm._s(this.perсent) + ")"),
-              ])
-            : _c("small", { staticClass: "text-danger" }, [
-                _vm._v("(↓" + _vm._s(this.perсent) + ")"),
-              ]),
-          _vm._v(" "),
-          _c("small", [
-            _vm._v(
-              "\n      " +
-                _vm._s(_vm.cellValue[1].toLocaleString("en")) +
-                "\n    "
-            ),
-          ]),
-          _vm._v(" "),
-          _c("small", [_vm._v("\n      Previous Period\n    ")]),
-        ])
-      : _vm.cellType === "action"
-      ? _c(
-          "div",
-          {
-            staticClass: "action-holder",
-            on: {
-              click: function ($event) {
-                $event.stopPropagation()
-                return _vm.onCellAction(_vm.cellValue)
-              },
-            },
-          },
-          [
-            _c("span", { staticClass: "link btn-link" }, [
-              _vm._v(_vm._s(_vm.cellValue.title)),
+  return _c(
+    "td",
+    {
+      attrs: {
+        "data-order": _vm.orderValue(),
+        "data-value":
+          _vm.cellValue && _vm.cellType === "dynamic" && _vm.cellValue[0],
+      },
+    },
+    [
+      !_vm.cellValue && _vm.cellValue !== 0
+        ? _c("span", [_vm._v("—")])
+        : _vm.cellType === "date"
+        ? _c("span", [_vm._v(_vm._s(this.transformDate(_vm.cellValue)))])
+        : _vm.cellType === "dynamic"
+        ? _c("div", { staticClass: "multiline-cell" }, [
+            _c("p", [
+              _vm._v(
+                "\n      " +
+                  _vm._s(_vm.cellValue[0].toLocaleString("en")) +
+                  "\n    "
+              ),
             ]),
             _vm._v(" "),
-            "appId" in _vm.cellValue
-              ? _c("Tooltip", {
-                  attrs: {
-                    content: "See app analytics",
-                    icon: "fa-area-chart",
-                  },
-                })
-              : _c("Tooltip", {
-                  attrs: { content: "Edit user", icon: "fa-pencil" },
-                }),
-          ],
-          1
-        )
-      : _c("span", [_vm._v("\n    " + _vm._s(_vm.cellValue) + "\n  ")]),
-  ])
+            _vm.cellValue[0] === _vm.cellValue[1]
+              ? _c("small", [_vm._v("(" + _vm._s(_vm.perсent) + ")")])
+              : _vm.cellValue[0] > _vm.cellValue[1]
+              ? _c("small", { staticClass: "text-success" }, [
+                  _vm._v("(↑" + _vm._s(this.perсent) + ")"),
+                ])
+              : _c("small", { staticClass: "text-danger" }, [
+                  _vm._v("(↓" + _vm._s(this.perсent) + ")"),
+                ]),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v(
+                "\n      " +
+                  _vm._s(_vm.cellValue[1].toLocaleString("en")) +
+                  "\n    "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("small", [_vm._v("\n      Previous Period\n    ")]),
+          ])
+        : _vm.cellType === "action"
+        ? _c(
+            "div",
+            {
+              staticClass: "action-holder",
+              on: {
+                click: function ($event) {
+                  $event.stopPropagation()
+                  return _vm.onCellAction(_vm.cellValue)
+                },
+              },
+            },
+            [
+              _c("span", { staticClass: "link btn-link" }, [
+                _vm._v(_vm._s(_vm.cellValue.title)),
+              ]),
+              _vm._v(" "),
+              "appId" in _vm.cellValue
+                ? _c("Tooltip", {
+                    attrs: {
+                      content: "See app analytics",
+                      icon: "fa-area-chart",
+                    },
+                  })
+                : _c("Tooltip", {
+                    attrs: { content: "Edit user", icon: "fa-pencil" },
+                  }),
+            ],
+            1
+          )
+        : _c("span", [_vm._v("\n    " + _vm._s(_vm.cellValue) + "\n  ")]),
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
