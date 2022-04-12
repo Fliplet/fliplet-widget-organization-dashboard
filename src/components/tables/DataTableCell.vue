@@ -1,5 +1,5 @@
 <template>
-  <td :data-order="orderValue()">
+  <td :data-order="orderValue()" :data-value="(cellValue && cellType === 'dynamic') && cellValue[0]">
     <span v-if="!cellValue && cellValue !== 0">—</span>
     <span v-else-if="cellType === 'date'">{{ this.transformDate(cellValue) }}</span>
     <div v-else-if="cellType === 'dynamic'" class="multiline-cell">
