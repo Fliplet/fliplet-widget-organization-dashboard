@@ -12,8 +12,7 @@
       v-model="dateRange"
       @update="updateValues"
       :linkedCalendars=false
-      :class="{ disabled: !isEnabled }"
-    >
+      :class="{ disabled: !isEnabled }">
       <template v-slot:input="picker">
         <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
         <span>{{ picker.startDate | formatLocaleDate }} - {{ picker.endDate | formatLocaleDate }}</span>
@@ -77,16 +76,15 @@ export default {
       }
     },
     onDropdownChange(range) {
-      if (range === 'none') {
+      if (!range || range === 'none' || range.split('-').length !== 2) {
         return;
       }
 
-      let startDate = new Date();
-      let endDate = new Date();
+      const [diff, unit] = range.split('-');
 
       this.customDates = false;
-      this.dateRange.startDate = startDate.setDate(endDate.getDate() - range);
-      this.dateRange.endDate = endDate;
+      this.dateRange.startDate = moment().subtract(diff, unit).startOf(unit).toDate();
+      this.dateRange.endDate = moment().subtract(1, unit).endOf(unit).toDate();
 
       if (this.onChange && typeof this.onChange === 'function') {
         this.onChange(this.dateRange.startDate, this.dateRange.endDate);

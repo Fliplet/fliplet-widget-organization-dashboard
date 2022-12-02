@@ -5,14 +5,13 @@
     name="dateRange"
     id="dateRange"
     class="date-dropdown form-control"
-    :disabled="!isEnabled"
-  >
-    <option value="1">Last 24 hours</option>
-    <option value="7">Last 7 days</option>
-    <option value="30">Last 30 days</option>
-    <option value="90">Last 90 days</option>
-    <option value="183">Last 6 months</option>
-    <option value="365">Last 12 months</option>
+    :disabled="!isEnabled">
+    <option value="1440-minute">Last 24 hours</option> <!-- Using "minute" to ensure the current hour is included -->
+    <option value="7-day">Last 7 days</option>
+    <option value="30-day">Last 30 days</option>
+    <option value="90-day">Last 90 days</option>
+    <option value="6-month">Last 6 months</option>
+    <option value="12-month">Last 12 months</option>
     <option value="none">Custom dates</option>
   </select>
 </template>
