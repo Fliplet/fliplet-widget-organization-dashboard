@@ -103,8 +103,8 @@ export default {
       : this.featureAvailable;
   },
   mounted() {
-    const startDate = moment().add(-1, 'month');
-    const endDate = moment();
+    const startDate = moment().subtract(30, 'day').startOf('day').toDate();
+    const endDate = moment().subtract(1, 'day').endOf('day').toDate();
 
     this.init();
     this.loadData(startDate, endDate);

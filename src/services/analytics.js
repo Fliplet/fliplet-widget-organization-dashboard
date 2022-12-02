@@ -1,5 +1,23 @@
 const getAnalyticsData = (startDate, endDate) => {
-  return Fliplet.Organizations.Analytics.get({ startDate, endDate });
+  const key = 'org-dashboard-date-range';
+
+  startDate = moment(startDate).toISOString();
+  endDate = moment(endDate).toISOString();
+
+  return Fliplet.Storage.get(key).then((value = {}) => {
+    return Fliplet.Cache.get({
+      key: 'org-analytics-cache',
+      expire: 60 * 60 * 24,
+      allowInterfaceCache: true,
+      forceBackgroundUpdate: value.startDate !== startDate || value.endDate !== endDate
+    }, () => {
+      return Fliplet.Organizations.Analytics.get({ startDate, endDate });
+    }).then((result) => {
+      return Fliplet.Storage.set(key, { startDate, endDate }).then(() => {
+        return result;
+      });
+    });
+  });
 };
 
 export const calculateDynamic = (currentValue, previousValue = 0) => {
