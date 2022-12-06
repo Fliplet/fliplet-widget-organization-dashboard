@@ -40,11 +40,8 @@ Vue.filter('formatLocaleDate', (date) => {
 export default {
   data() {
     const localeData = moment.localeData(locale);
-
-    let startDate = new Date();
-    let endDate = new Date();
-
-    startDate.setDate(endDate.getDate() - 30);
+    const startDate = moment().subtract(30, 'day').startOf('day').toDate();
+    const endDate = moment().subtract(1, 'day').endOf('day').toDate();
 
     return {
       dateRange: {

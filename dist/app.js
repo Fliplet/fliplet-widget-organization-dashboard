@@ -98,11 +98,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-new Vue({
-  el: '#organization-dashboard',
-  render: function render(createElement) {
-    return createElement(_OrgUsageDashboard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  }
+Fliplet().then(function () {
+  new Vue({
+    el: '#organization-dashboard',
+    render: function render(createElement) {
+      return createElement(_OrgUsageDashboard_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+    }
+  });
 });
 
 /***/ }),
@@ -17856,8 +17858,8 @@ __webpack_require__.r(__webpack_exports__);
     this.featureAvailable = widgetData.hasOwnProperty('featureAvailable') ? !!widgetData.featureAvailable : this.featureAvailable;
   },
   mounted: function mounted() {
-    var startDate = moment().add(-1, 'month');
-    var endDate = moment();
+    var startDate = moment().subtract(30, 'day').startOf('day').toDate();
+    var endDate = moment().subtract(1, 'day').endOf('day').toDate();
     this.init();
     this.loadData(startDate, endDate);
     Fliplet.Widget.autosize();
@@ -18371,9 +18373,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var getAnalyticsData = function getAnalyticsData(startDate, endDate) {
-  return Fliplet.Organizations.Analytics.get({
-    startDate: startDate,
-    endDate: endDate
+  var key = 'org-dashboard-date-range';
+  startDate = moment(startDate).toISOString();
+  endDate = moment(endDate).toISOString();
+  return Fliplet.Storage.get(key).then(function () {
+    var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    return Fliplet.Cache.get({
+      key: 'org-analytics-cache',
+      expire: 60 * 60 * 24,
+      allowInterfaceCache: true,
+      forceBackgroundUpdate: value.startDate !== startDate || value.endDate !== endDate
+    }, function () {
+      return Fliplet.Organizations.Analytics.get({
+        startDate: startDate,
+        endDate: endDate
+      });
+    }).then(function (result) {
+      return Fliplet.Storage.set(key, {
+        startDate: startDate,
+        endDate: endDate
+      }).then(function () {
+        return result;
+      });
+    });
   });
 };
 
@@ -19483,9 +19505,8 @@ Vue.filter('formatLocaleDate', function (date) {
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var localeData = moment.localeData(locale);
-    var startDate = new Date();
-    var endDate = new Date();
-    startDate.setDate(endDate.getDate() - 30);
+    var startDate = moment().subtract(30, 'day').startOf('day').toDate();
+    var endDate = moment().subtract(1, 'day').endOf('day').toDate();
     return {
       dateRange: {
         startDate: startDate,
@@ -19770,7 +19791,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      selectedRange: '30'
+      selectedRange: '30-day'
     };
   },
   props: {

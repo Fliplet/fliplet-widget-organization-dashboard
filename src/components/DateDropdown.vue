@@ -20,7 +20,7 @@
 export default {
   data() {
     return {
-      selectedRange: '30'
+      selectedRange: '30-day'
     };
   },
   props: {
