@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr v-for="row in rows" :key="row">
-          <DataTableCell v-for="cell in row" :key="cell.value" :cellValue="cell.value" :cellType="cell.type"></DataTableCell>
+          <DataTableCell v-for="cell in row" :key="cell.value" :cellValue="cell.value" :cellType="cell.type" :startDate="startDate" :endDate="endDate"></DataTableCell>
         </tr>
       </tbody>
     </table>
@@ -51,6 +51,14 @@ export default {
       default: function() {
         return [];
       }
+    },
+    startDate: {
+      type: String,
+      default: ''
+    },
+    endDate: {
+      type: String,
+      default: ''
     }
   },
   methods: {

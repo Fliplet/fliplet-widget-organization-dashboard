@@ -45,6 +45,14 @@ export default {
     cellType: {
       type: String,
       default: 'raw'
+    },
+    startDate: {
+      type: String,
+      default: ''
+    },
+    endDate: {
+      type: String,
+      default: ''
     }
   },
   components: {
@@ -95,7 +103,11 @@ export default {
         options: {
           size: 'large',
           title: options.title,
-          appId: options.appId
+          appId: options.appId,
+          data: {
+            startDate: this.startDate,
+            endDate: this.endDate
+          }
         }
       });
     },
