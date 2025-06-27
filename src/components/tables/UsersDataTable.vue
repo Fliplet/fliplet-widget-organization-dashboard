@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isDataTransformed">
-      <DataTable :sort-params="sortParams" :columns="cols" :rows="rows"></DataTable>
+      <DataTable :sort-params="sortParams" :columns="cols" :rows="rows" :startDate="startDate" :endDate="endDate"></DataTable>
     </div>
   </div>
 </template>
@@ -59,6 +59,14 @@ export default {
       default() {
         return [];
       }
+    },
+    startDate: {
+      type: String,
+      default: ''
+    },
+    endDate: {
+      type: String,
+      default: ''
     }
   },
   computed: {

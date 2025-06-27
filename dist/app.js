@@ -17720,12 +17720,20 @@ var render = function () {
               _vm.activeTab === "apps"
                 ? _c("AppDataTable", {
                     staticClass: "component",
-                    attrs: { apps: this.analyticsData.apps },
+                    attrs: {
+                      apps: this.analyticsData.apps,
+                      startDate: this.startDate,
+                      endDate: this.endDate,
+                    },
                   })
                 : _vm.activeTab === "users"
                 ? _c("UsersDataTable", {
                     staticClass: "component",
-                    attrs: { users: this.analyticsData.users },
+                    attrs: {
+                      users: this.analyticsData.users,
+                      startDate: this.startDate,
+                      endDate: this.endDate,
+                    },
                   })
                 : _vm._e(),
             ],
@@ -17811,7 +17819,9 @@ __webpack_require__.r(__webpack_exports__);
       activeTab: 'apps',
       showDatePicker: false,
       isDataPartiallyAvailable: false,
-      featureAvailable: true
+      featureAvailable: true,
+      startDate: '',
+      endDate: ''
     };
   },
   components: {
@@ -17828,6 +17838,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.isLoading = true;
       this.isDataPartiallyAvailable = moment(startDate).isBefore('2020-06-24');
+      this.startDate = moment(startDate).format('YYYY-MM-DD');
+      this.endDate = moment(endDate).format('YYYY-MM-DD');
       var getAnalytics = this.featureAvailable ? Object(_services_analytics__WEBPACK_IMPORTED_MODULE_3__["default"])(startDate, endDate) : Promise.resolve(_config_sample_data__WEBPACK_IMPORTED_MODULE_7__["default"]);
       getAnalytics.then(function (result) {
         result.appSessions = Object(_services_analytics__WEBPACK_IMPORTED_MODULE_3__["handleSessions"])(startDate, endDate, result.appSessions);
@@ -18600,6 +18612,8 @@ var render = function () {
                 "sort-params": _vm.sortParams,
                 columns: _vm.cols,
                 rows: _vm.rows,
+                startDate: _vm.startDate,
+                endDate: _vm.endDate,
               },
             }),
           ],
@@ -18691,6 +18705,14 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+    },
+    startDate: {
+      type: String,
+      "default": ''
+    },
+    endDate: {
+      type: String,
+      "default": ''
     }
   },
   computed: {
@@ -18882,7 +18904,12 @@ var render = function () {
               _vm._l(row, function (cell) {
                 return _c("DataTableCell", {
                   key: cell.value,
-                  attrs: { cellValue: cell.value, cellType: cell.type },
+                  attrs: {
+                    cellValue: cell.value,
+                    cellType: cell.type,
+                    startDate: _vm.startDate,
+                    endDate: _vm.endDate,
+                  },
                 })
               }),
               1
@@ -18967,6 +18994,14 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+    },
+    startDate: {
+      type: String,
+      "default": ''
+    },
+    endDate: {
+      type: String,
+      "default": ''
     }
   },
   methods: {
@@ -19252,6 +19287,14 @@ __webpack_require__.r(__webpack_exports__);
     cellType: {
       type: String,
       "default": 'raw'
+    },
+    startDate: {
+      type: String,
+      "default": ''
+    },
+    endDate: {
+      type: String,
+      "default": ''
     }
   },
   components: {
@@ -19300,7 +19343,11 @@ __webpack_require__.r(__webpack_exports__);
         options: {
           size: 'large',
           title: options.title,
-          appId: options.appId
+          appId: options.appId,
+          data: {
+            startDate: this.startDate,
+            endDate: this.endDate
+          }
         }
       });
     },
@@ -20725,6 +20772,8 @@ var render = function () {
                 "sort-params": _vm.sortParams,
                 columns: _vm.cols,
                 rows: _vm.rows,
+                startDate: _vm.startDate,
+                endDate: _vm.endDate,
               },
             }),
           ],
@@ -20804,6 +20853,14 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+    },
+    startDate: {
+      type: String,
+      "default": ''
+    },
+    endDate: {
+      type: String,
+      "default": ''
     }
   },
   computed: {

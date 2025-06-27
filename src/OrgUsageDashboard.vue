@@ -18,8 +18,8 @@
         <li role="presentation" @click="activeTab = 'apps'" :class="{active: activeTab === 'apps'}">Apps</li>
         <li role="presentation" @click="activeTab = 'users'" :class="{active: activeTab === 'users'}">Users</li>
       </ul>
-      <AppDataTable v-if="activeTab === 'apps'" class="component" :apps="this.analyticsData.apps"></AppDataTable>
-      <UsersDataTable v-else-if="activeTab === 'users'" class="component" :users="this.analyticsData.users"></UsersDataTable>
+      <AppDataTable v-if="activeTab === 'apps'" class="component" :apps="this.analyticsData.apps" :startDate="this.startDate" :endDate="this.endDate"></AppDataTable>
+      <UsersDataTable v-else-if="activeTab === 'users'" class="component" :users="this.analyticsData.users" :startDate="this.startDate" :endDate="this.endDate"></UsersDataTable>
     </div>
     <div v-else>
       <span>There is no data to show</span>
@@ -47,7 +47,9 @@ export default {
       activeTab: 'apps',
       showDatePicker: false,
       isDataPartiallyAvailable: false,
-      featureAvailable: true
+      featureAvailable: true,
+      startDate: '',
+      endDate: ''
     };
   },
   components: {
@@ -62,6 +64,8 @@ export default {
     loadData: function(startDate, endDate) {
       this.isLoading = true;
       this.isDataPartiallyAvailable = moment(startDate).isBefore('2020-06-24');
+      this.startDate = moment(startDate).format('YYYY-MM-DD');
+      this.endDate = moment(endDate).format('YYYY-MM-DD');
 
       const getAnalytics = this.featureAvailable
         ? getAnalyticsData(startDate, endDate)
