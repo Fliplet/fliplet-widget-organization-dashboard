@@ -28,31 +28,31 @@ export default {
           'The total number of Studio users that logged in for the first time.'
         ],
         ['studioUsers', 'Studio users', 'The total number of Studio users.'],
-        ['appsCreated', 'Apps created', 'The total number of apps created.'],
+        ['appsCreated', 'Projects created', 'The total number of projects created.'],
         [
           'appsEdited',
-          'Apps edited',
-          'The total number of apps that had screens altered within Studio.'
+          'Projects edited',
+          'The total number of projects that had screens altered within Studio.'
         ],
         [
           'appsPublished',
-          'Apps published',
-          'The total number of apps that had app updates published via Studio.'
+          'Projects published',
+          'The total number of projects that had updates published via Studio.'
         ],
         [
           'appSessions',
-          'App sessions',
-          'The total number of app sessions. A session is a group of interactions without 30 min of inactivity.'
+          'Sessions',
+          'The total number of sessions. A session is a group of interactions without 30 min of inactivity.'
         ],
         [
           'totalAppUsers',
-          'Total app users',
-          'Total app users across all apps. A user is a unique device and, if the app has a login, a unique logged in user.'
+          'Total users',
+          'Total users across all projects. A user is a unique device and, if the project has a login, a unique logged in user.'
         ],
         [
           'uniqueAppUsers',
-          'Unique app users',
-          'Total app users excluding duplicate visits from authenticated users.'
+          'Unique users',
+          'Total users excluding duplicate visits from authenticated users.'
         ]
       ]
     };

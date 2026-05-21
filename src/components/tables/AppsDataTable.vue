@@ -14,12 +14,12 @@ export default {
     return {
       cols: [
         {
-          name: 'App',
+          name: 'Project',
           help: ''
         },
         {
           name: 'Created',
-          help: 'The date the app was created in Studio'
+          help: 'The date the project was created in Studio'
         },
         {
           name: 'Last edit',
@@ -27,19 +27,19 @@ export default {
         },
         {
           name: 'Last publish',
-          help: 'The date an app update was last published in Studio'
+          help: 'The date a project update was last published in Studio'
         },
         {
           name: 'Apple',
-          help: 'The first time an app was built for iOS'
+          help: 'The first time a project was built for iOS'
         },
         {
           name: 'Android',
-          help: 'The first time an app was built for Android'
+          help: 'The first time a project was built for Android'
         },
         {
           name: 'Web',
-          help: 'The first time an app was published to web'
+          help: 'The first time a project was published to web'
         },
         {
           name: 'Users',
@@ -51,7 +51,7 @@ export default {
         },
         {
           name: 'Sessions',
-          help: 'The total number of app sessions.\n A session is a group of interactions without 30 min of inactivity.'
+          help: 'The total number of sessions.\n A session is a group of interactions without 30 min of inactivity.'
         },
         {
           name: 'Edits',
@@ -59,7 +59,7 @@ export default {
         },
         {
           name: 'Published',
-          help: 'The total times the an app updated was published in Studio'
+          help: 'The total times a project update was published in Studio'
         }
       ],
       rows: [],

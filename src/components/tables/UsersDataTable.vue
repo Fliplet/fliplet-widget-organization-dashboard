@@ -34,16 +34,16 @@ export default {
           help: 'The number of Fliplet Viewer sessions the user has. \n A session is a group of interactions without 30 min of inactivity.'
         },
         {
-          name: 'App publishes',
-          help: 'The number of times the user has published an app updated in Studio'
+          name: 'Publishes',
+          help: 'The number of times the user has published a project update in Studio'
         },
         {
-          name: 'Apps available',
-          help: 'The number of apps the user has access to in Studio'
+          name: 'Projects available',
+          help: 'The number of projects the user has access to in Studio'
         },
         {
-          name: 'Apps created',
-          help: 'The number of apps the user has created in Studio'
+          name: 'Projects created',
+          help: 'The number of projects the user has created in Studio'
         }
       ],
       rows: [],

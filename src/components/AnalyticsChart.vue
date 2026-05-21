@@ -59,7 +59,7 @@ export default {
         },
         series: [
           {
-            name: 'Apps Sessions',
+            name: 'Sessions',
             color: '#43ccf0',
             fillColor: 'rgba(67,204,240,0.4)',
             type: 'areaspline',
