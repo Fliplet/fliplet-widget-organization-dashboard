@@ -12,10 +12,10 @@
       <AnalyticsChart class="component" :appsSessions="this.analyticsData.appSessions" :studioSessions="this.analyticsData.studioSessions"></AnalyticsChart>
       <AnalyticsSummary class="component" :analyticsData="this.analyticsData.stats"></AnalyticsSummary>
       <Message v-show="this.isDataPartiallyAvailable" class="component">
-        Data for <b>studio sessions, new studio users</b> and <b>apps edited</b> are only available from June 24th 2020.
+        Data for <b>studio sessions, new studio users</b> and <b>projects edited</b> are only available from June 24th 2020.
       </Message>
       <ul class="tabs">
-        <li role="presentation" @click="activeTab = 'apps'" :class="{active: activeTab === 'apps'}">Apps</li>
+        <li role="presentation" @click="activeTab = 'apps'" :class="{active: activeTab === 'apps'}">Projects</li>
         <li role="presentation" @click="activeTab = 'users'" :class="{active: activeTab === 'users'}">Users</li>
       </ul>
       <AppDataTable v-if="activeTab === 'apps'" class="component" :apps="this.analyticsData.apps" :startDate="this.startDate" :endDate="this.endDate"></AppDataTable>

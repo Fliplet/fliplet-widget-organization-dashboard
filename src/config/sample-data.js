@@ -165,7 +165,7 @@ const sampleData = {
   },
   apps: [{
     id: 1,
-    name: 'First app',
+    name: 'First project',
     createdAt: moment().subtract(15, 'days').utc().format(),
     updatedAt: moment().subtract(12, 'days').utc().format(),
     publishedAt: moment().subtract(5, 'days').utc().format(),
@@ -196,7 +196,7 @@ const sampleData = {
     }
   }, {
     id: 2,
-    name: 'Second app',
+    name: 'Second project',
     createdAt: moment().subtract(5, 'days').utc().format(),
     updatedAt: moment().subtract(2, 'days').utc().format(),
     publishedAt: null,
