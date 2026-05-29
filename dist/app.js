@@ -17682,7 +17682,7 @@ var render = function () {
                   _vm._v("\n      Data for "),
                   _c("b", [_vm._v("studio sessions, new studio users")]),
                   _vm._v(" and "),
-                  _c("b", [_vm._v("apps edited")]),
+                  _c("b", [_vm._v("projects edited")]),
                   _vm._v(" are only available from June 24th 2020.\n    "),
                 ]
               ),
@@ -17699,7 +17699,7 @@ var render = function () {
                       },
                     },
                   },
-                  [_vm._v("Apps")]
+                  [_vm._v("Projects")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -17991,7 +17991,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      cellInformation: [['studioSessions', 'Studio sessions', 'The total number of Studio sessions. A session is a group of interactions without 30 min of inactivity.'], ['newStudioUsers', 'New studio users', 'The total number of Studio users that logged in for the first time.'], ['studioUsers', 'Studio users', 'The total number of Studio users.'], ['appsCreated', 'Apps created', 'The total number of apps created.'], ['appsEdited', 'Apps edited', 'The total number of apps that had screens altered within Studio.'], ['appsPublished', 'Apps published', 'The total number of apps that had app updates published via Studio.'], ['appSessions', 'App sessions', 'The total number of app sessions. A session is a group of interactions without 30 min of inactivity.'], ['totalAppUsers', 'Total app users', 'Total app users across all apps. A user is a unique device and, if the app has a login, a unique logged in user.'], ['uniqueAppUsers', 'Unique app users', 'Total app users excluding duplicate visits from authenticated users.']]
+      cellInformation: [['studioSessions', 'Studio sessions', 'The total number of Studio sessions. A session is a group of interactions without 30 min of inactivity.'], ['newStudioUsers', 'New studio users', 'The total number of Studio users that logged in for the first time.'], ['studioUsers', 'Studio users', 'The total number of Studio users.'], ['appsCreated', 'Projects created', 'The total number of projects created.'], ['appsEdited', 'Projects edited', 'The total number of projects that had screens altered within Studio.'], ['appsPublished', 'Projects published', 'The total number of projects that had updates published via Studio.'], ['appSessions', 'Sessions', 'The total number of sessions. A session is a group of interactions without 30 min of inactivity.'], ['totalAppUsers', 'Total users', 'Total users across all projects. A user is a unique device and, if the project has a login, a unique logged in user.'], ['uniqueAppUsers', 'Unique users', 'Total users excluding duplicate visits from authenticated users.']]
     };
   },
   components: {
@@ -18656,26 +18656,26 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       cols: [{
-        name: 'App',
+        name: 'Project',
         help: ''
       }, {
         name: 'Created',
-        help: 'The date the app was created in Studio'
+        help: 'The date the project was created in Studio'
       }, {
         name: 'Last edit',
         help: 'The date a screen was last editing in Studio'
       }, {
         name: 'Last publish',
-        help: 'The date an app update was last published in Studio'
+        help: 'The date a project update was last published in Studio'
       }, {
         name: 'Apple',
-        help: 'The first time an app was built for iOS'
+        help: 'The first time a project was built for iOS'
       }, {
         name: 'Android',
-        help: 'The first time an app was built for Android'
+        help: 'The first time a project was built for Android'
       }, {
         name: 'Web',
-        help: 'The first time an app was published to web'
+        help: 'The first time a project was published to web'
       }, {
         name: 'Users',
         help: 'Total number of logged-in users.'
@@ -18684,13 +18684,13 @@ __webpack_require__.r(__webpack_exports__);
         help: 'Total number of unique devices.'
       }, {
         name: 'Sessions',
-        help: 'The total number of app sessions.\n A session is a group of interactions without 30 min of inactivity.'
+        help: 'The total number of sessions.\n A session is a group of interactions without 30 min of inactivity.'
       }, {
         name: 'Edits',
         help: 'The total times screens were edited in Studio'
       }, {
         name: 'Published',
-        help: 'The total times the an app updated was published in Studio'
+        help: 'The total times a project update was published in Studio'
       }],
       rows: [],
       isDataTransformed: false
@@ -19206,7 +19206,7 @@ var render = function () {
               "appId" in _vm.cellValue
                 ? _c("Tooltip", {
                     attrs: {
-                      content: "See app analytics",
+                      content: "See project analytics",
                       icon: "fa-area-chart",
                     },
                   })
@@ -20627,7 +20627,7 @@ __webpack_require__.r(__webpack_exports__);
           showInLegend: false
         },
         series: [{
-          name: 'Apps Sessions',
+          name: 'Sessions',
           color: '#43ccf0',
           fillColor: 'rgba(67,204,240,0.4)',
           type: 'areaspline',
@@ -20831,14 +20831,14 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Viewer sessions',
         help: 'The number of Fliplet Viewer sessions the user has. \n A session is a group of interactions without 30 min of inactivity.'
       }, {
-        name: 'App publishes',
-        help: 'The number of times the user has published an app updated in Studio'
+        name: 'Publishes',
+        help: 'The number of times the user has published a project update in Studio'
       }, {
-        name: 'Apps available',
-        help: 'The number of apps the user has access to in Studio'
+        name: 'Projects available',
+        help: 'The number of projects the user has access to in Studio'
       }, {
-        name: 'Apps created',
-        help: 'The number of apps the user has created in Studio'
+        name: 'Projects created',
+        help: 'The number of projects the user has created in Studio'
       }],
       rows: [],
       isDataTransformed: false
@@ -21184,7 +21184,7 @@ var sampleData = {
   },
   apps: [{
     id: 1,
-    name: 'First app',
+    name: 'First project',
     createdAt: moment().subtract(15, 'days').utc().format(),
     updatedAt: moment().subtract(12, 'days').utc().format(),
     publishedAt: moment().subtract(5, 'days').utc().format(),
@@ -21215,7 +21215,7 @@ var sampleData = {
     }
   }, {
     id: 2,
-    name: 'Second app',
+    name: 'Second project',
     createdAt: moment().subtract(5, 'days').utc().format(),
     updatedAt: moment().subtract(2, 'days').utc().format(),
     publishedAt: null,
